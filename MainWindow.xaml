@@ -1,0 +1,427 @@
+﻿<Window x:Class="takip.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:takip"
+        Height="800" Width="1200"
+        Background="#F5F5F5"
+        Closed="Window_Closed">
+    
+    <Window.Resources>
+        <!-- Drop Shadow Effect -->
+        <DropShadowEffect x:Key="DropShadowEffect" Color="Gray" Direction="315" ShadowDepth="3" BlurRadius="5" Opacity="0.3"/>
+    </Window.Resources>
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Başlık ve Dil Seçici -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Başlık -->
+            <TextBlock Grid.Column="0" x:Name="TitleText" 
+                       FontSize="24" FontWeight="Bold" 
+                       HorizontalAlignment="Center" Margin="0,0,0,20"
+                       Foreground="#2196F3"/>
+            
+            <!-- Settings and Tools -->
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,0,20">
+                <Button x:Name="SettingsButton" Content="⚙️ Settings" Width="80" Height="30" 
+                        FontSize="12" Padding="5"
+                        Background="#FF9800" Foreground="White"
+                        Click="OpenSettingsButton_Click"/>
+                <Button x:Name="LogButton" Content="📋 Log" Width="80" Height="30" 
+                        FontSize="12" Padding="5" Margin="10,0,0,0"
+                        Background="#9C27B0" Foreground="White"
+                        Click="OpenLogButton_Click"/>
+                <Button x:Name="BatchTrackingButton" Content="📊 Batch Tracking" Width="120" Height="30" 
+                        FontSize="12" Padding="5" Margin="10,0,0,0"
+                        Background="#E91E63" Foreground="White"
+                        Click="OpenBatchTrackingButton_Click"/>
+                <!-- SimpleTestWindow kaldırıldı -->
+            </StackPanel>
+        </Grid>
+
+        <!-- Ana İçerik - Sekmeli Yapı -->
+        <TabControl x:Name="MainTabControl" Grid.Row="1" Margin="10" SelectionChanged="MainTabControl_SelectionChanged">
+            <!-- Üretim Takip Sekmesi -->
+            <TabItem x:Name="ProductionTab" Header="Production Tracking">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- PLC Durum Göstergesi - KALDIRILDI -->
+                    
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                    <!-- Left Side - Shift Management -->
+                    <Border Grid.Column="0" Background="White" CornerRadius="10" Padding="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Shift Management Header -->
+                    <TextBlock Grid.Row="0" x:Name="ShiftManagementText" FontSize="18" FontWeight="Bold" 
+                               HorizontalAlignment="Center" Margin="0,0,0,20" Foreground="#2196F3"/>
+                    
+                    <!-- Control Buttons -->
+                    <Grid Grid.Row="1" Margin="0,0,0,20">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                                <Button x:Name="ToggleShiftButton" Content="Start Shift" 
+                                       FontSize="14" Padding="20,10" Margin="0,0,10,0"
+                                       Background="#2196F3" Foreground="White" 
+                                       Click="ToggleShiftButton_Click"/>
+                                <Button x:Name="OpenShiftHistoryButton" Content="Shift History" 
+                                       FontSize="14" Padding="20,10"
+                                       Background="#FF9800" Foreground="White" 
+                                       Click="OpenShiftHistoryButton_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Operator Management -->
+                    <Border Grid.Row="3" Background="#F8F9FA" Padding="10" Margin="0,0,0,15" CornerRadius="8">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <ComboBox x:Name="OperatorComboBox" FontSize="12" Padding="6" Margin="0,0,8,0"
+                                     Background="White" BorderBrush="#CCCCCC" Grid.Column="0"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Date Information -->
+                    <UniformGrid Grid.Row="4" Columns="2" Margin="0,0,0,15">
+                        <Border Background="#E3F2FD" Padding="10" Margin="3" CornerRadius="6">
+                            <StackPanel>
+                                <TextBlock x:Name="ShiftStartLabel" FontWeight="Bold" HorizontalAlignment="Center" FontSize="10"/>
+                                <TextBlock x:Name="ShiftStartTimeText" FontSize="12" 
+                                          HorizontalAlignment="Center" Foreground="#2196F3"/>
+                            </StackPanel>
+                        </Border>
+                        
+                        <Border Background="#E8F5E8" Padding="10" Margin="3" CornerRadius="6">
+                            <StackPanel>
+                                <TextBlock x:Name="ProductionStartLabel" FontWeight="Bold" HorizontalAlignment="Center" FontSize="10"/>
+                                <TextBlock x:Name="ProductionStartTimeText" FontSize="12" 
+                                          HorizontalAlignment="Center" Foreground="#4CAF50"/>
+                            </StackPanel>
+                        </Border>
+                    </UniformGrid>
+                    
+                    <!-- Daily Pallet Production -->
+                    <Border Grid.Row="5" Background="#FFF3E0" Padding="10" Margin="0,0,0,15" CornerRadius="6">
+                        <StackPanel>
+                            <TextBlock x:Name="DailyPalletText" FontWeight="Bold" Margin="0,0,0,8" FontSize="12"/>
+                            <ScrollViewer Height="100" VerticalScrollBarVisibility="Auto">
+                                <ListBox x:Name="StoneCountersPanel" Background="Transparent" BorderThickness="0">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="White" Padding="8" Margin="1" CornerRadius="4">
+                                                <TextBlock Text="{Binding}" FontSize="11" FontWeight="Bold" 
+                                                          Foreground="#FF9800"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </ScrollViewer>
+                        </StackPanel>
+                    </Border>
+                    
+                    <!-- Total Pallet Production -->
+                    <Border Grid.Row="4" Background="#E8F5E8" Padding="10" Margin="0,0,0,15" CornerRadius="6">
+                        <StackPanel>
+                            <TextBlock x:Name="TotalProductionLabel" FontWeight="Bold" HorizontalAlignment="Center" FontSize="12" Margin="0,0,0,8"/>
+                            <TextBlock x:Name="TotalProductionText" FontSize="18" 
+                                      FontWeight="Bold" HorizontalAlignment="Center" 
+                                      Foreground="#4CAF50" Margin="0,0,0,8"/>
+                            
+                            <!-- Shift Stone Production -->
+                            <Border Background="White" Padding="8" CornerRadius="4">
+                                <StackPanel>
+                                    <TextBlock x:Name="ShiftProductionText" FontWeight="Bold" FontSize="10" 
+                                              HorizontalAlignment="Center" Margin="0,0,0,4"/>
+                                    <ScrollViewer Height="80" VerticalScrollBarVisibility="Auto">
+                                        <StackPanel x:Name="ShiftStoneCountersPanel">
+                                            <TextBlock x:Name="NoProductionText" FontSize="11" 
+                                                      HorizontalAlignment="Center" Foreground="#666666"/>
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Shift Notes -->
+                    <Border Grid.Row="5" Background="#FFF3E0" Padding="10" Margin="0,0,0,15" CornerRadius="6">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock x:Name="ProductionNotesLabel" FontSize="12" FontWeight="Bold" 
+                                          HorizontalAlignment="Left" Text="Production Notes"/>
+                                <Button x:Name="AddNoteButton" Content="Add Note" 
+                                       FontSize="10" Padding="8,4" 
+                                       Background="#FF9800" Foreground="White" 
+                                       HorizontalAlignment="Right" 
+                                       Click="AddNoteButton_Click"/>
+                            </Grid>
+                            
+                            <!-- Defective Product Information -->
+                            <Border Background="White" Padding="8" CornerRadius="4" Margin="0,0,0,8">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Fire Mal Sayısı:" FontWeight="Bold" FontSize="10" 
+                                              VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                    <TextBlock x:Name="FireProductText" Grid.Column="1" FontSize="12" 
+                                              FontWeight="Bold" Foreground="#F44336" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="2" Text="adet" FontSize="10" 
+                                              VerticalAlignment="Center" Foreground="#666666"/>
+                                </Grid>
+                            </Border>
+                            
+                            <!-- Idle Time Information -->
+                            <Border Background="White" Padding="8" CornerRadius="4" Margin="0,0,0,8">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="Boşta Geçen Süre:" FontWeight="Bold" FontSize="10" 
+                                              VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                    <TextBlock x:Name="IdleTimeText" Grid.Column="1" FontSize="12" 
+                                              FontWeight="Bold" Foreground="#FF9800" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="2" Text="saat:dakika" FontSize="10" 
+                                              VerticalAlignment="Center" Foreground="#666666"/>
+                                </Grid>
+                            </Border>
+                            
+                            <!-- Notes List -->
+                            <ScrollViewer Height="100" VerticalScrollBarVisibility="Auto">
+                                <StackPanel x:Name="ProductionNotesPanel">
+                                    <TextBlock x:Name="NoNotesText" FontSize="11" 
+                                              HorizontalAlignment="Center" Foreground="#666666" 
+                                              Text="No notes added yet"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Shift Log Area -->
+                    <Border Grid.Row="6" Background="#E8F5E8" Padding="10" Margin="0,0,0,15" CornerRadius="6">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,8">
+                                <TextBlock FontSize="12" FontWeight="Bold" 
+                                          HorizontalAlignment="Left" Text="📊 Shift Log"/>
+                                <Button x:Name="ClearLogButton" Content="Clear" 
+                                       FontSize="10" Padding="8,4" 
+                                       Background="#4CAF50" Foreground="White" 
+                                       HorizontalAlignment="Right" 
+                                       Click="ClearLogButton_Click"/>
+                            </Grid>
+                            
+                            <!-- Log Content -->
+                            <ScrollViewer Height="120" VerticalScrollBarVisibility="Auto" 
+                                         Background="White" Padding="8">
+                                <TextBlock x:Name="VardiyaLogText" FontSize="10" 
+                                          FontFamily="Consolas" TextWrapping="Wrap"
+                                          Foreground="#333333"/>
+                            </ScrollViewer>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Log Area - REMOVED (Only Log window will be used for performance) -->
+                </Grid>
+            </Border>
+
+            <!-- Right Side - Mold Management -->
+            <Border Grid.Column="2" Background="White" CornerRadius="10" Padding="20">
+    <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Mold Management Header and Add Button -->
+                    <Grid Grid.Row="0" Margin="0,0,0,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <!-- Mold Management Header -->
+                        <TextBlock Grid.Column="0" x:Name="MoldManagementTitle" FontSize="18" FontWeight="Bold" 
+                                   HorizontalAlignment="Center" Foreground="#4CAF50"/>
+                        
+                        <!-- Mold Add Button - Only + -->
+                        <Button Grid.Column="1" x:Name="AddMoldButton" Content="+" 
+                               FontSize="16" FontWeight="Bold" Width="30" Height="30" 
+                               Background="#4CAF50" Foreground="White" 
+                               Click="AddMoldButton_Click" HorizontalAlignment="Right"/>
+                    </Grid>
+
+                    <!-- Mold List -->
+                    <Border Grid.Row="1" Background="#F8F9FA" Padding="15" CornerRadius="8">
+                        <StackPanel>
+                            <TextBlock x:Name="ExistingMoldsText" FontWeight="Bold" Margin="0,0,0,15" FontSize="14"/>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="200">
+                                <StackPanel x:Name="MoldsPanel">
+                                    <!-- Molds will be added here dynamically -->
+                                </StackPanel>
+                            </ScrollViewer>
+                            
+                            <!-- Shift Batches -->
+                            <TextBlock x:Name="ShiftBatchesText" FontWeight="Bold" Margin="0,15,0,10" FontSize="14" Text="Shift Batches"/>
+                            
+                            <!-- Shift Batch Details -->
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="300" Margin="0,0,0,10">
+                                <StackPanel x:Name="ShiftBatchesPanel">
+                                    <!-- Shift batch details will be added here dynamically -->
+                                </StackPanel>
+                            </ScrollViewer>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            
+            <!-- Concrete Plant Reporting Tab -->
+            <TabItem x:Name="ConcreteTab" Header="Concrete Plant Reporting">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Mixer Seçimi Kaldırıldı - Tek sayfada iki mixer butonları -->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+                        <Button x:Name="OpenConcreteReportingM1Button"
+                                Content="🏗️ Mixer1 Reporting" FontSize="14" Padding="20,10"
+                                Background="#FF9800" Foreground="White" Margin="0,0,10,0"
+                                Click="OpenConcreteReportingM1Button_Click"/>
+                        <Button x:Name="OpenConcreteReportingM2Button"
+                                Content="🏗️ Mixer2 Reporting" FontSize="14" Padding="20,10"
+                                Background="#FF9800" Foreground="White" Margin="0,0,10,0"
+                                Click="OpenConcreteReportingM2Button_Click"/>
+                        <Button x:Name="OpenGeneralReportsButton"
+                                Content="📊 General Reporting" FontSize="14" Padding="20,10"
+                                Background="#4CAF50" Foreground="White" Margin="0,0,10,0"
+                                Click="OpenGeneralReportsButton_Click"/>
+                    </StackPanel>
+                    
+                    <!-- Concrete Reporting Content -->
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <!-- Cement Silos Header -->
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,15">
+                            <TextBlock Text="🏭 Cement Silos" FontSize="18" FontWeight="Bold" 
+                                      Foreground="#333333" VerticalAlignment="Center"/>
+                            <Button x:Name="RefreshSilosButton" Content="🔄 Refresh" FontSize="12" 
+                                   Padding="10,5" Margin="20,0,0,0"
+                                   Background="#2196F3" Foreground="White"
+                                   Click="RefreshSilosButton_Click"/>
+                        </StackPanel>
+                        
+                        <!-- Silo Visualization -->
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <ItemsControl x:Name="CementSilosContainer" Margin="0,0,0,20">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="3" Margin="10"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="White" CornerRadius="8" Padding="12" Margin="6" 
+                                                BorderBrush="#E0E0E0" BorderThickness="1"
+                                                Effect="{StaticResource DropShadowEffect}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                
+                                                <!-- Silo Header -->
+                                                <StackPanel Grid.Row="0" Margin="0,0,0,10">
+                                                    <TextBlock Text="{Binding CementType}" FontWeight="Bold" FontSize="14" 
+                                                               Foreground="#333333" TextAlignment="Center" Margin="0,0,0,3"/>
+                                                    <TextBlock Text="{Binding SiloNumber, StringFormat='Silo #{0}'}" 
+                                                               FontSize="10" Foreground="#666666" TextAlignment="Center"/>
+                                                </StackPanel>
+                                                
+                                                <!-- New Silo Control -->
+                                                <Grid Grid.Row="1" Margin="0,0,0,10">
+                                                    <local:CementSiloControl FillPercent="{Binding FillPercentage}" 
+                                                                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                                           Width="80" Height="120"/>
+                                                </Grid>
+                                                
+                                                <!-- Information -->
+                                                <StackPanel Grid.Row="2" Margin="0,0,0,10">
+                                                    <TextBlock Text="{Binding LastRefillDate, StringFormat='Last Refill: {0:dd.MM.yyyy HH:mm}'}" 
+                                                               FontSize="9" Foreground="#999999" TextAlignment="Center" Margin="0,0,0,3"/>
+                                                    <TextBlock Text="{Binding CurrentAmount, StringFormat='Amount: {0:N0} kg'}" 
+                                                               FontSize="10" Foreground="#666666" TextAlignment="Center"/>
+                                                </StackPanel>
+                                                
+                                                <!-- Buttons -->
+                                                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <Button Content="📊 Details" FontSize="10" Padding="8,4" Margin="2,0"
+                                                            Background="#2196F3" Foreground="White"
+                                                            Click="ViewSiloDetails_Click" Tag="{Binding Id}"/>
+                                                    <Button Content="🔄 Refill" FontSize="10" Padding="8,4" Margin="2,0"
+                                                            Background="#4CAF50" Foreground="White"
+                                                            Click="RefillSilo_Click" Tag="{Binding Id}"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                        
+                        <!-- Description -->
+                        <TextBlock Grid.Row="2" x:Name="ConcreteInfoText" 
+                              Text="Concrete plant reporting system. Process Mixer1 and Mixer2 from a single page."
+                                  FontSize="14" TextAlignment="Center" VerticalAlignment="Center"
+                                  Foreground="#666666"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

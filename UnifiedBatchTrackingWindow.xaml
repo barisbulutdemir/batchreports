@@ -1,0 +1,201 @@
+<Window x:Class="takip.UnifiedBatchTrackingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Unified Batch Tracking System" Height="700" Width="1400"
+        WindowStartupLocation="CenterScreen">
+    
+    <Window.Resources>
+        <!-- Drop Shadow Effect -->
+        <DropShadowEffect x:Key="DropShadowEffect" Color="Gray" Direction="315" ShadowDepth="3" BlurRadius="5" Opacity="0.3"/>
+    </Window.Resources>
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Başlık -->
+        <TextBlock Grid.Row="0" Text="Unified Batch Tracking System (M1 + M2)" FontSize="20" FontWeight="Bold" Margin="0,0,0,15" HorizontalAlignment="Center"/>
+
+        <!-- Kontrol Butonları -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,15" HorizontalAlignment="Center">
+            <Button x:Name="RefreshButton" Content="🔄 Refresh" Click="RefreshButton_Click" Margin="0,0,10,0" Padding="15,8" Background="#2196F3" Foreground="White"/>
+            <Button x:Name="ShowActiveButton" Content="🟢 Active Batches" Click="ShowActiveButton_Click" Margin="0,0,10,0" Padding="15,8" Background="#4CAF50" Foreground="White"/>
+            <Button x:Name="ShowAllButton" Content="📋 All Batches" Click="ShowAllButton_Click" Margin="0,0,10,0" Padding="15,8" Background="#FF9800" Foreground="White"/>
+            <Button x:Name="ShowCompletedButton" Content="✅ Completed" Click="ShowCompletedButton_Click" Margin="0,0,10,0" Padding="15,8" Background="#9C27B0" Foreground="White"/>
+            <TextBlock x:Name="StatusText" Text="Ready" FontSize="12" Foreground="Blue" VerticalAlignment="Center" Margin="20,0,0,0"/>
+        </StackPanel>
+
+        <!-- Ana İçerik - Yan Yana Batch Takip -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Sol Taraf - M1 Batch Takip -->
+            <Border Grid.Column="0" Background="White" CornerRadius="10" Padding="15" Effect="{StaticResource DropShadowEffect}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- M1 Başlığı -->
+                    <TextBlock Grid.Row="0" Text="🔧 Mixer1 (M1) Batch Tracking" FontSize="16" FontWeight="Bold" 
+                               HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="#2196F3"/>
+
+                    <!-- M1 Kontrol Butonları -->
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center">
+                        <Button x:Name="M1RefreshButton" Content="Refresh" Click="M1RefreshButton_Click" Margin="0,0,5,0" Padding="8,4" FontSize="10"/>
+                        <Button x:Name="M1DeleteButton" Content="Delete" Click="M1DeleteButton_Click" Margin="0,0,5,0" Padding="8,4" FontSize="10" Background="LightCoral" Foreground="White"/>
+                        <Button x:Name="M1DeleteAllCompletedButton" Content="🗑️ Delete Completed" Click="M1DeleteAllCompletedButton_Click" Margin="0,0,5,0" Padding="8,4" FontSize="10" Background="DarkRed" Foreground="White"/>
+                    </StackPanel>
+
+                    <!-- M1 Batch Listesi -->
+                    <DataGrid Grid.Row="2" x:Name="M1BatchDataGrid" AutoGenerateColumns="False" 
+                              CanUserAddRows="False" CanUserDeleteRows="False" 
+                              GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                              SelectionMode="Single" SelectionChanged="M1BatchDataGrid_SelectionChanged"
+                              FontSize="11">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="40"/>
+                            <DataGridTextColumn Header="Saat" Binding="{Binding OccurredAtLocal}" Width="50"/>
+                            <DataGridTextColumn Header="Durum" Binding="{Binding Status}" Width="80">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="Blue"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Status}" Value="In Weighing Bucket">
+                                                <Setter Property="Foreground" Value="Orange"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Status}" Value="Bekleme Bunkerinde">
+                                                <Setter Property="Foreground" Value="Brown"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Status}" Value="Mixerde">
+                                                <Setter Property="Foreground" Value="Red"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Status}" Value="Completed">
+                                                <Setter Property="Foreground" Value="Green"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Operator" Binding="{Binding OperatorName}" Width="70"/>
+                            <DataGridTextColumn Header="Recipe" Binding="{Binding RecipeCode}" Width="60"/>
+                            <DataGridTextColumn Header="Agrega" Binding="{Binding TotalAggregateKg, StringFormat=F0}" Width="50"/>
+                            <DataGridTextColumn Header="Cement" Binding="{Binding TotalCementKg, StringFormat=F0}" Width="50"/>
+                            <DataGridTextColumn Header="Su" Binding="{Binding TotalWaterKg, StringFormat=F0}" Width="40"/>
+                            <DataGridTextColumn Header="Nem %" Binding="{Binding MoisturePercent, StringFormat=F1}" Width="40"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!-- M1 Durum -->
+                    <TextBlock Grid.Row="3" x:Name="M1StatusText" Text="M1 Batch'leri: 0" FontSize="10" Foreground="Gray" 
+                               HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </Grid>
+            </Border>
+            
+
+            <!-- Sağ Taraf - M2 Batch Takip -->
+            <Border Grid.Column="2" Background="White" CornerRadius="10" Padding="15" Effect="{StaticResource DropShadowEffect}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- M2 Başlığı -->
+                    <TextBlock Grid.Row="0" Text="🔧 Mixer2 (M2) Batch Tracking" FontSize="16" FontWeight="Bold" 
+                               HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="#4CAF50"/>
+
+                    <!-- M2 Kontrol Butonları -->
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Center">
+                        <Button x:Name="M2RefreshButton" Content="Refresh" Click="M2RefreshButton_Click" Margin="0,0,5,0" Padding="8,4" FontSize="10"/>
+                        <Button x:Name="M2DeleteButton" Content="Delete" Click="M2DeleteButton_Click" Margin="0,0,5,0" Padding="8,4" FontSize="10" Background="LightCoral" Foreground="White"/>
+                        <Button x:Name="M2DeleteAllCompletedButton" Content="🗑️ Delete Completed" Click="M2DeleteAllCompletedButton_Click" Margin="0,0,5,0" Padding="8,4" FontSize="10" Background="DarkRed" Foreground="White"/>
+                    </StackPanel>
+
+                    <!-- M2 Batch Listesi -->
+                    <DataGrid Grid.Row="2" x:Name="M2BatchDataGrid" AutoGenerateColumns="False" 
+                              CanUserAddRows="False" CanUserDeleteRows="False" 
+                              GridLinesVisibility="Horizontal" HeadersVisibility="Column"
+                              SelectionMode="Single" SelectionChanged="M2BatchDataGrid_SelectionChanged"
+                              FontSize="11">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Saat" Binding="{Binding OccurredAtLocal}" Width="60"/>
+                            <DataGridTextColumn Header="Durum" Binding="{Binding Status}" Width="80">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="Blue"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Status}" Value="Yatay Kovada">
+                                                <Setter Property="Foreground" Value="Orange"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Status}" Value="Dikey Kovada">
+                                                <Setter Property="Foreground" Value="Purple"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Status}" Value="Bekleme Bunkerinde">
+                                                <Setter Property="Foreground" Value="Brown"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Status}" Value="Mixerde">
+                                                <Setter Property="Foreground" Value="Red"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Status}" Value="Completed">
+                                                <Setter Property="Foreground" Value="Green"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Operatör" Binding="{Binding OperatorName}" Width="80"/>
+                            <DataGridTextColumn Header="Reçete" Binding="{Binding RecipeCode}" Width="70"/>
+                            <DataGridTextColumn Header="Agrega" Binding="{Binding TotalAggregateKg, StringFormat=F0}" Width="60"/>
+                            <DataGridTextColumn Header="Çimento" Binding="{Binding TotalCementKg, StringFormat=F0}" Width="60"/>
+                            <DataGridTextColumn Header="Loadcell Su" Binding="{Binding LoadcellWaterKg, StringFormat=F0}" Width="60"/>
+                            <DataGridTextColumn Header="Pulse Su" Binding="{Binding PulseWaterKg, StringFormat=F0}" Width="60"/>
+                            <DataGridTextColumn Header="Toplam Su" Binding="{Binding TotalWaterKg, StringFormat=F0}" Width="60"/>
+                            <DataGridTextColumn Header="Nem %" Binding="{Binding MoisturePercent, StringFormat=F1}" Width="50"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!-- M2 Durum -->
+                    <TextBlock Grid.Row="3" x:Name="M2StatusText" Text="M2 Batch'leri: 0" FontSize="10" Foreground="Gray" 
+                               HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                </Grid>
+            </Border>
+
+            <!-- Sağ Taraf - Katkı Sinyalleri Penceresi -->
+            <Border Grid.Column="4" Background="#F5F5F5" CornerRadius="10" Padding="15" Effect="{StaticResource DropShadowEffect}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Katkı Sinyalleri Başlığı -->
+                    <TextBlock Grid.Row="0" Text="🧪 Katkı Sinyalleri" FontSize="14" FontWeight="Bold" 
+                               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                    <!-- Katkı Sinyalleri İçeriği -->
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" 
+                                  HorizontalScrollBarVisibility="Auto" Background="White" BorderBrush="LightGray" BorderThickness="1">
+                        <TextBlock x:Name="KatkiSignalsText" TextWrapping="Wrap" FontFamily="Consolas" FontSize="10" 
+                                   Padding="5" Background="White"/>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

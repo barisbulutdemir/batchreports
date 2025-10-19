@@ -1,0 +1,97 @@
+﻿<Window x:Class="takip.ConcreteReporting2Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+        Title="Mixer2 Concrete Reporting" Height="700" Width="1200" WindowStartupLocation="CenterOwner"
+        WindowState="Maximized">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Filtreleme Alanı -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
+            <Label Content="Start:" VerticalAlignment="Center" FontSize="11"/>
+            <DatePicker x:Name="StartDatePicker" SelectedDate="{x:Static sys:DateTime.Today}" Margin="4,0" FontSize="11"/>
+            <Label Content="End:" VerticalAlignment="Center" Margin="8,0,0,0" FontSize="11"/>
+            <DatePicker x:Name="EndDatePicker" SelectedDate="{x:Static sys:DateTime.Today}" Margin="4,0" FontSize="11"/>
+            <Button x:Name="LoadDataButton" Content="Load Data" Width="90" Margin="8,0,0,0"
+                    Background="#4CAF50" Foreground="White" Padding="4,2" FontSize="11"/>
+            <Button x:Name="RefreshButton" Content="Refresh" Width="65" Margin="4,0,0,0"
+                    Background="#2196F3" Foreground="White" Padding="4,2" FontSize="11"/>
+            <Button x:Name="ExportButton" Content="PDF" Width="65" Margin="4,0,0,0"
+                    Background="#FF9800" Foreground="White" Padding="4,2" FontSize="11"/>
+            <Button x:Name="DeleteButton" Content="Delete" Width="65" Margin="4,0,0,0"
+                    Background="#F44336" Foreground="White" Padding="4,2" FontSize="11"/>
+        </StackPanel>
+
+        <!-- Ana DataGrid -->
+        <DataGrid x:Name="BatchesDataGrid" Grid.Row="1" AutoGenerateColumns="False" 
+                  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"
+                  GridLinesVisibility="Horizontal" AlternatingRowBackground="#FAFAFA"
+                  HeadersVisibility="Column" SelectionMode="Single"
+                  RowHeight="24" FontSize="11">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding OccurredAtLocalFull}" Width="120"/>
+                <DataGridTextColumn Header="Recipe" Binding="{Binding RecipeCode}" Width="80"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding StatusTranslated}" Width="100"/>
+                <DataGridTextColumn Header="Cement" Binding="{Binding TotalCementKg, StringFormat='N0'}" Width="70"/>
+                <DataGridTextColumn Header="Aggregate" Binding="{Binding TotalAggregateKg, StringFormat='N0'}" Width="80"/>
+                <DataGridTextColumn Header="Water" Binding="{Binding TotalWaterKg, StringFormat='N1'}" Width="60"/>
+                <DataGridTextColumn Header="Pigment" Binding="{Binding TotalPigmentKg, StringFormat='N1'}" Width="70"/>
+                <DataGridTextColumn Header="Moisture%" Binding="{Binding MoisturePercent, StringFormat='N1'}" Width="70"/>
+                <DataGridTemplateColumn Header="Detail" Width="60">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="View" Click="ViewDetailButton_Click" 
+                                    Background="#E0E0E0" Foreground="#333333" Padding="2,1"
+                                    FontSize="10" BorderBrush="#CCCCCC" BorderThickness="1"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Alt Bilgi ve Pagination -->
+        <Grid Grid.Row="2" Margin="0,8,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Sol taraf - Status ve Count -->
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Label x:Name="StatusLabel" Content="Ready" FontWeight="Bold" FontSize="11"/>
+                <Label x:Name="CountLabel" Content="" Margin="12,0,0,0" FontSize="11"/>
+            </StackPanel>
+            
+            <!-- Sağ taraf - Pagination -->
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Label Content="Page size:" VerticalAlignment="Center" Margin="0,0,4,0" FontSize="11"/>
+                <ComboBox x:Name="PageSizeCombo" Width="60" Margin="0,0,8,0" VerticalAlignment="Center" FontSize="11">
+                    <ComboBoxItem Content="50" IsSelected="True"/>
+                    <ComboBoxItem Content="100"/>
+                    <ComboBoxItem Content="200"/>
+                    <ComboBoxItem Content="500"/>
+                </ComboBox>
+                
+                <Button x:Name="FirstPageButton" Content="⏮" Width="24" Margin="0,0,2,0" 
+                        Background="#607D8B" Foreground="White" Padding="1" FontSize="9"/>
+                <Button x:Name="PrevPageButton" Content="◀" Width="24" Margin="0,0,2,0" 
+                        Background="#607D8B" Foreground="White" Padding="1" FontSize="9"/>
+                
+                <Label x:Name="PageInfoLabel" Content="Page 1 / 1" VerticalAlignment="Center" 
+                       Margin="4,0" FontWeight="Bold" FontSize="11"/>
+                
+                <Button x:Name="NextPageButton" Content="▶" Width="24" Margin="2,0,0,0" 
+                        Background="#607D8B" Foreground="White" Padding="1" FontSize="9"/>
+                <Button x:Name="LastPageButton" Content="⏭" Width="24" Margin="2,0,0,0" 
+                        Background="#607D8B" Foreground="White" Padding="1" FontSize="9"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
+

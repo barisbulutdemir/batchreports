@@ -1,0 +1,45 @@
+<Window x:Class="takip.LogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Application Logs" Height="600" Width="1000"
+        WindowStartupLocation="CenterOwner"
+        Background="#F5F5F5">
+    
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Başlık -->
+        <TextBlock Grid.Row="0" Text="📋 Application Logs" 
+                   FontSize="18" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,10"
+                   Foreground="#2196F3"/>
+
+        <!-- Kontrol Butonları -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button x:Name="RefreshButton" Content="🔄 Refresh" Click="RefreshButton_Click" 
+                    Margin="0,0,10,0" Padding="10,5" Background="#4CAF50" Foreground="White"/>
+            <Button x:Name="ClearLogButton" Content="🗑️ Clear" Click="ClearLogButton_Click" 
+                    Margin="0,0,10,0" Padding="10,5" Background="#F44336" Foreground="White"/>
+            <Button x:Name="CopyLogButton" Content="📋 Copy" Click="CopyLogButton_Click" 
+                    Margin="0,0,10,0" Padding="10,5" Background="#FF9800" Foreground="White"/>
+            <Button x:Name="SaveLogButton" Content="💾 Save" Click="SaveLogButton_Click" 
+                    Margin="0,0,10,0" Padding="10,5" Background="#2196F3" Foreground="White"/>
+            <TextBlock x:Name="LogCountText" Text="Log count: 0" 
+                       FontSize="12" Foreground="Gray" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Log İçeriği -->
+        <Border Grid.Row="2" BorderBrush="#CCCCCC" BorderThickness="1" 
+                Background="White" CornerRadius="5">
+            <ScrollViewer x:Name="LogScrollViewer" VerticalScrollBarVisibility="Auto" 
+                          HorizontalScrollBarVisibility="Auto">
+                <TextBlock x:Name="LogTextBlock" FontFamily="Consolas" FontSize="10" 
+                           TextWrapping="Wrap" Padding="10"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

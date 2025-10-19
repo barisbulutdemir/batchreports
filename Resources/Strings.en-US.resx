@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  <!-- Main Window -->
+  <data name="MainWindow.Title" xml:space="preserve">
+    <value>Production Tracking System</value>
+  </data>
+  <data name="MainWindow.ShiftManagement" xml:space="preserve">
+    <value>Shift Management</value>
+  </data>
+  <data name="MainWindow.ProductionInfo" xml:space="preserve">
+    <value>Production Information</value>
+  </data>
+  <data name="MainWindow.StartShift" xml:space="preserve">
+    <value>Start Shift</value>
+  </data>
+  <data name="MainWindow.EndShift" xml:space="preserve">
+    <value>End Shift</value>
+  </data>
+  <data name="MainWindow.ShiftHistory" xml:space="preserve">
+    <value>Shift History</value>
+  </data>
+  <data name="MainWindow.PlcTest" xml:space="preserve">
+    <value>🔧 PLC Test Page</value>
+  </data>
+  <data name="MainWindow.TotalProduction" xml:space="preserve">
+    <value>Total Production</value>
+  </data>
+  <data name="MainWindow.Logs" xml:space="preserve">
+    <value>Logs</value>
+  </data>
+  <data name="MainWindow.DailyPalletProduction" xml:space="preserve">
+    <value>Daily Pallet Production</value>
+  </data>
+  <data name="MainWindow.ShiftStart" xml:space="preserve">
+    <value>Shift Start</value>
+  </data>
+  <data name="MainWindow.ProductionStart" xml:space="preserve">
+    <value>Production Start</value>
+  </data>
+  <data name="MainWindow.NotStarted" xml:space="preserve">
+    <value>Not Started</value>
+  </data>
+  <data name="MainWindow.Pallet" xml:space="preserve">
+    <value>pallet</value>
+  </data>
+  <data name="MainWindow.Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="MainWindow.Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="MainWindow.PlcStatus" xml:space="preserve">
+    <value>PLC: Checking Connection...</value>
+  </data>
+  <data name="MainWindow.PlcConnected" xml:space="preserve">
+    <value>PLC: Connected</value>
+  </data>
+  <data name="MainWindow.PlcDisconnected" xml:space="preserve">
+    <value>PLC: Disconnected</value>
+  </data>
+  <data name="MainWindow.PlcError" xml:space="preserve">
+    <value>PLC: Error</value>
+  </data>
+  
+  <!-- Language Selection -->
+  <data name="Language.Turkish" xml:space="preserve">
+    <value>Türkçe</value>
+  </data>
+  <data name="Language.English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Language.SelectLanguage" xml:space="preserve">
+    <value>Language Selection</value>
+  </data>
+  
+  <!-- Messages -->
+  <data name="Message.SelectOperator" xml:space="preserve">
+    <value>Please select an operator!</value>
+  </data>
+  <data name="Message.EndShiftConfirm" xml:space="preserve">
+    <value>Are you sure you want to end the shift?</value>
+  </data>
+  <data name="Message.ShiftEnded" xml:space="preserve">
+    <value>End Shift</value>
+  </data>
+  <data name="Message.Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Message.Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Message.Question" xml:space="preserve">
+    <value>Question</value>
+  </data>
+  
+  <!-- PLC Test -->
+  <data name="PlcTest.Title" xml:space="preserve">
+    <value>PLC Test Page</value>
+  </data>
+  <data name="PlcTest.IpAddress" xml:space="preserve">
+    <value>PLC IP Address:</value>
+  </data>
+  <data name="PlcTest.Port" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="PlcTest.RegisterAddress" xml:space="preserve">
+    <value>Register Address:</value>
+  </data>
+  <data name="PlcTest.WordCount" xml:space="preserve">
+    <value>Word Count:</value>
+  </data>
+  <data name="PlcTest.TestButton" xml:space="preserve">
+    <value>Test PLC</value>
+  </data>
+  <data name="PlcTest.Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="PlcTest.Result" xml:space="preserve">
+    <value>Result:</value>
+  </data>
+  <data name="PlcTest.Status" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="PlcTest.Testing" xml:space="preserve">
+    <value>Testing...</value>
+  </data>
+  <data name="PlcTest.Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="PlcTest.Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  
+  <!-- Shift History -->
+  <data name="ShiftHistory.Title" xml:space="preserve">
+    <value>Shift History</value>
+  </data>
+  <data name="ShiftHistory.Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="ShiftHistory.NoRecords" xml:space="preserve">
+    <value>No shift records found yet.</value>
+  </data>
+  <data name="ShiftHistory.RecordsShowing" xml:space="preserve">
+    <value>records showing</value>
+  </data>
+  <data name="ShiftHistory.TotalProduction" xml:space="preserve">
+    <value>Total Production:</value>
+  </data>
+  <data name="ShiftHistory.ShiftDuration" xml:space="preserve">
+    <value>Shift Duration:</value>
+  </data>
+  <data name="ShiftHistory.ProductionDuration" xml:space="preserve">
+    <value>Production Duration:</value>
+  </data>
+  <data name="ShiftHistory.Operator" xml:space="preserve">
+    <value>Operator:</value>
+  </data>
+  <data name="ShiftHistory.StartTime" xml:space="preserve">
+    <value>Start:</value>
+  </data>
+  <data name="MainWindow.InitializeComponentCompleted" xml:space="preserve">
+    <value>InitializeComponent completed</value>
+  </data>
+  <data name="MainWindow.InitializeDatabaseCompleted" xml:space="preserve">
+    <value>InitializeDatabase completed</value>
+  </data>
+  <data name="MainWindow.DatabaseCheckCompleted" xml:space="preserve">
+    <value>Database tables check completed</value>
+  </data>
+  <data name="MainWindow.InitializeServicesCompleted" xml:space="preserve">
+    <value>InitializeServices completed</value>
+  </data>
+  <data name="MainWindow.InitializeTimerCompleted" xml:space="preserve">
+    <value>InitializeTimer completed</value>
+  </data>
+  <data name="MainWindow.RecoverOpenBatchesTriggered" xml:space="preserve">
+    <value>RecoverOpenBatchesAsync triggered</value>
+  </data>
+  <data name="MainWindow.LoadInitialDataCompleted" xml:space="preserve">
+    <value>LoadInitialData completed</value>
+  </data>
+  <data name="MainWindow.InitializeLocalizationCompleted" xml:space="preserve">
+    <value>InitializeLocalization completed</value>
+  </data>
+  <data name="MainWindow.ConstructorCompleted" xml:space="preserve">
+    <value>MainWindow constructor completed successfully</value>
+  </data>
+  <data name="MainWindow.ConstructorError" xml:space="preserve">
+    <value>MainWindow constructor error</value>
+  </data>
+  <data name="MainWindow.LogCleared" xml:space="preserve">
+    <value>Log cleared</value>
+  </data>
+  <data name="MainWindow.Status.WeighingBucket" xml:space="preserve">
+    <value>Weighing Bucket</value>
+  </data>
+  <data name="MainWindow.Status.WaitingBunker" xml:space="preserve">
+    <value>Waiting Bunker</value>
+  </data>
+  <data name="MainWindow.Status.InMixer" xml:space="preserve">
+    <value>Mixing</value>
+  </data>
+  <data name="MainWindow.Status.HorizontalBucket" xml:space="preserve">
+    <value>Horizontal Bucket</value>
+  </data>
+  <data name="MainWindow.Status.VerticalBucket" xml:space="preserve">
+    <value>Vertical Bucket</value>
+  </data>
+  <!-- SettingsWindow Messages -->
+  <data name="SettingsWindow.DataLoadError" xml:space="preserve">
+    <value>Data loading error: {0}</value>
+  </data>
+  <data name="SettingsWindow.MoldListLoadError" xml:space="preserve">
+    <value>Mold list loading error: {0}</value>
+  </data>
+  <data name="SettingsWindow.PleaseSelectMoldToDelete" xml:space="preserve">
+    <value>Please select a mold to delete!</value>
+  </data>
+  <data name="SettingsWindow.MoldDeleteConfirmation" xml:space="preserve">
+    <value>Mold Deletion Confirmation</value>
+  </data>
+  <data name="SettingsWindow.MoldDeletedSuccessfully" xml:space="preserve">
+    <value>Mold '{0}' deleted successfully!</value>
+  </data>
+  <data name="SettingsWindow.MoldDeleteError" xml:space="preserve">
+    <value>Mold deletion error: {0}</value>
+  </data>
+  <data name="SettingsWindow.OperatorListLoadError" xml:space="preserve">
+    <value>Operator list loading error: {0}</value>
+  </data>
+  <data name="SettingsWindow.OperatorAddedSuccessfully" xml:space="preserve">
+    <value>Operator '{0}' added successfully!</value>
+  </data>
+  <data name="SettingsWindow.OperatorAddError" xml:space="preserve">
+    <value>Operator addition error: {0}</value>
+  </data>
+  <data name="SettingsWindow.PleaseSelectOperatorToDelete" xml:space="preserve">
+    <value>Please select an operator to delete!</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeleteConfirmation" xml:space="preserve">
+    <value>Operator Deletion Confirmation</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeletedSuccessfully" xml:space="preserve">
+    <value>Operator '{0}' deleted successfully!</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeleteError" xml:space="preserve">
+    <value>Operator deletion error: {0}</value>
+  </data>
+  <data name="SettingsWindow.ErrorOccurred" xml:space="preserve">
+    <value>Error occurred</value>
+  </data>
+  <data name="SettingsWindow.InvalidIpAddress" xml:space="preserve">
+    <value>Invalid IP address</value>
+  </data>
+  <data name="SettingsWindow.InvalidPort" xml:space="preserve">
+    <value>Invalid port</value>
+  </data>
+  <data name="SettingsWindow.InvalidRegisterAddress" xml:space="preserve">
+    <value>Invalid register address</value>
+  </data>
+  <data name="SettingsWindow.InvalidWordCount" xml:space="preserve">
+    <value>Invalid word count</value>
+  </data>
+  <data name="SettingsWindow.TestSuccessful" xml:space="preserve">
+    <value>Test successful</value>
+  </data>
+  <data name="SettingsWindow.TestFailed" xml:space="preserve">
+    <value>Test failed</value>
+  </data>
+  <data name="SettingsWindow.ReadyForTest" xml:space="preserve">
+    <value>Ready - Enter information for test</value>
+  </data>
+  <data name="SettingsWindow.NewMold" xml:space="preserve">
+    <value>New mold</value>
+  </data>
+  <data name="SettingsWindow.MoldAddedSuccessfully" xml:space="preserve">
+    <value>Mold '{0}' added successfully!</value>
+  </data>
+  <data name="SettingsWindow.MoldAddError" xml:space="preserve">
+    <value>Mold addition error: {0}</value>
+  </data>
+  <data name="SettingsWindow.Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="SettingsWindow.HistoryCleared" xml:space="preserve">
+    <value>History Cleared</value>
+  </data>
+  <data name="SettingsWindow.HistoryClearError" xml:space="preserve">
+    <value>History clearing error: {0}</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsLoadError" xml:space="preserve">
+    <value>PLC settings loading error: {0}</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsSavedSuccessfully" xml:space="preserve">
+    <value>PLC settings saved successfully!</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsSaveError" xml:space="preserve">
+    <value>PLC settings save error: {0}</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesLoadError" xml:space="preserve">
+    <value>Material names loading error: {0}</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesSavedSuccessfully" xml:space="preserve">
+    <value>Material names saved successfully!</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesSaveError" xml:space="preserve">
+    <value>Material names save error: {0}</value>
+  </data>
+  <data name="SettingsWindow.TimeZoneSettingsLoadError" xml:space="preserve">
+    <value>Time zone settings loading error: {0}</value>
+  </data>
+  <data name="SettingsWindow.DaylightSavingTime" xml:space="preserve">
+    <value>Daylight saving time: {0}</value>
+  </data>
+  <data name="SettingsWindow.Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="SettingsWindow.No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  
+  <!-- UnifiedBatchTrackingWindow Messages -->
+  <data name="UnifiedBatchTrackingWindow.CriticalError" xml:space="preserve">
+    <value>Critical Error</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Status.Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeleteConfirmation" xml:space="preserve">
+    <value>Delete M1 Batch ID {0}?</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BatchDelete" xml:space="preserve">
+    <value>Batch Deletion</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeletedSuccessfully" xml:space="preserve">
+    <value>M1 Batch deleted successfully.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Successful" xml:space="preserve">
+    <value>Successful</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BatchNotFound" xml:space="preserve">
+    <value>Batch not found. It may have been deleted already.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeleteError" xml:space="preserve">
+    <value>M1 Batch deletion error:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.PleaseSelectM1BatchToDelete" xml:space="preserve">
+    <value>Please select an M1 batch to delete.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeleteConfirmation" xml:space="preserve">
+    <value>Delete M2 Batch ID {0}?</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeletedSuccessfully" xml:space="preserve">
+    <value>M2 Batch deleted successfully.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeleteError" xml:space="preserve">
+    <value>M2 Batch deletion error:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.PleaseSelectM2BatchToDelete" xml:space="preserve">
+    <value>Please select an M2 batch to delete.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Status.Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.NoCompletedM1BatchesToDelete" xml:space="preserve">
+    <value>No completed M1 batches found to delete.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BulkDelete" xml:space="preserve">
+    <value>Bulk Delete</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchesDeletedSuccessfully" xml:space="preserve">
+    <value>{0} M1 batches deleted successfully.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BulkDeleteError" xml:space="preserve">
+    <value>Bulk deletion error:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.NoCompletedM2BatchesToDelete" xml:space="preserve">
+    <value>No completed M2 batches found to delete.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchesDeletedSuccessfully" xml:space="preserve">
+    <value>{0} M2 batches deleted successfully.</value>
+  </data>
+  
+  <!-- ReportsWindow Messages -->
+  <data name="ReportsWindow.StartupError" xml:space="preserve">
+    <value>ReportsWindow startup error: {0}</value>
+  </data>
+  <data name="ReportsWindow.LoadError" xml:space="preserve">
+    <value>ReportsWindow loading error: {0}</value>
+  </data>
+  <data name="ReportsWindow.Aggregate" xml:space="preserve">
+    <value>Aggregate: {0} kg</value>
+  </data>
+  <data name="ReportsWindow.Pigment" xml:space="preserve">
+    <value>Pigment: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.TotalWater" xml:space="preserve">
+    <value>Total Water: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotal" xml:space="preserve">
+    <value>Pigment Total: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.TotalBatch" xml:space="preserve">
+    <value>Total Batch</value>
+  </data>
+  <data name="ReportsWindow.Cement" xml:space="preserve">
+    <value>Cement</value>
+  </data>
+  <data name="ReportsWindow.AggregateTotal" xml:space="preserve">
+    <value>Aggregate (Total)</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotalLabel" xml:space="preserve">
+    <value>Pigment (Total)</value>
+  </data>
+  <data name="ReportsWindow.TotalWaterLabel" xml:space="preserve">
+    <value>Total Water</value>
+  </data>
+  <data name="ReportsWindow.AverageMoisture" xml:space="preserve">
+    <value>Average Moisture</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotalName" xml:space="preserve">
+    <value>Pigment Total</value>
+  </data>
+  <data name="ReportsWindow.Mixer1DataLoaded" xml:space="preserve">
+    <value>Mixer1 data loaded: {0} batches</value>
+  </data>
+  <data name="ReportsWindow.Mixer1ReportLoadError" xml:space="preserve">
+    <value>Error loading Mixer1 reports:\n{0}</value>
+  </data>
+  <data name="ReportsWindow.Mixer2DataLoaded" xml:space="preserve">
+    <value>Mixer2 data loaded: {0} batches</value>
+  </data>
+  <data name="ReportsWindow.Mixer2ReportLoadError" xml:space="preserve">
+    <value>Error loading Mixer2 reports:\n{0}</value>
+  </data>
+  <data name="ReportsWindow.DeleteAllHistoryConfirmation" xml:space="preserve">
+    <value>All historical batch data (Mixer1+Mixer2) will be deleted. Are you sure?</value>
+  </data>
+  <data name="ReportsWindow.AllHistoryDeleted" xml:space="preserve">
+    <value>All historical data deleted</value>
+  </data>
+  <data name="ReportsWindow.DesktopFolderNotFound" xml:space="preserve">
+    <value>Desktop folder not found</value>
+  </data>
+  
+  <!-- Common Messages -->
+  <data name="Common.Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Common.Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Common.Successful" xml:space="preserve">
+    <value>Successful</value>
+  </data>
+  <data name="Common.Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="SettingsWindow.MoldDeleteConfirmationText" xml:space="preserve">
+    <value>Are you sure you want to delete the mold '{0}'?\n\nThis action cannot be undone!</value>
+  </data>
+  <data name="SettingsWindow.OperatorListLoadError" xml:space="preserve">
+    <value>Operator list loading error: {0}</value>
+  </data>
+  <data name="SettingsWindow.OperatorAddedSuccessfully" xml:space="preserve">
+    <value>Operator '{0}' added successfully!</value>
+  </data>
+  <data name="SettingsWindow.OperatorAddError" xml:space="preserve">
+    <value>Operator addition error: {0}</value>
+  </data>
+  <data name="SettingsWindow.PleaseSelectOperatorToDelete" xml:space="preserve">
+    <value>Please select an operator to delete!</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeleteConfirmation" xml:space="preserve">
+    <value>Operator Deletion Confirmation</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeleteConfirmationText" xml:space="preserve">
+    <value>Are you sure you want to delete the operator '{0}'?\n\nThis action cannot be undone!</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeletedSuccessfully" xml:space="preserve">
+    <value>Operator '{0}' deleted successfully!</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeleteError" xml:space="preserve">
+    <value>Operator deletion error: {0}</value>
+  </data>
+  <data name="SettingsWindow.ErrorOccurred" xml:space="preserve">
+    <value>Error occurred</value>
+  </data>
+  <data name="SettingsWindow.InvalidIpAddress" xml:space="preserve">
+    <value>Invalid IP address</value>
+  </data>
+  <data name="SettingsWindow.InvalidPort" xml:space="preserve">
+    <value>Invalid port</value>
+  </data>
+  <data name="SettingsWindow.InvalidRegisterAddress" xml:space="preserve">
+    <value>Invalid register address</value>
+  </data>
+  <data name="SettingsWindow.InvalidWordCount" xml:space="preserve">
+    <value>Invalid word count</value>
+  </data>
+  <data name="SettingsWindow.Port" xml:space="preserve">
+    <value>Port: {0}</value>
+  </data>
+  <data name="SettingsWindow.Register" xml:space="preserve">
+    <value>Register: {0}</value>
+  </data>
+  <data name="SettingsWindow.WordCount" xml:space="preserve">
+    <value>Word Count: {0}</value>
+  </data>
+  <data name="SettingsWindow.Word" xml:space="preserve">
+    <value>Word {0}: {1} (0x{1:X4})</value>
+  </data>
+  <data name="SettingsWindow.TestSuccessful" xml:space="preserve">
+    <value>Test successful</value>
+  </data>
+  <data name="SettingsWindow.TestFailed" xml:space="preserve">
+    <value>Test failed</value>
+  </data>
+  <data name="SettingsWindow.ReadyForTest" xml:space="preserve">
+    <value>Ready - Enter information for test</value>
+  </data>
+  <data name="SettingsWindow.NewMold" xml:space="preserve">
+    <value>New mold</value>
+  </data>
+  <data name="SettingsWindow.MoldAddedSuccessfully" xml:space="preserve">
+    <value>Mold '{0}' added successfully!</value>
+  </data>
+  <data name="SettingsWindow.MoldAddError" xml:space="preserve">
+    <value>Mold addition error: {0}</value>
+  </data>
+  <data name="SettingsWindow.Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="SettingsWindow.HistoryCleared" xml:space="preserve">
+    <value>History Cleared</value>
+  </data>
+  <data name="SettingsWindow.HistoryClearError" xml:space="preserve">
+    <value>History clearing error: {0}</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsLoadError" xml:space="preserve">
+    <value>PLC settings loading error: {0}</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsSavedSuccessfully" xml:space="preserve">
+    <value>PLC settings saved successfully!</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsSaveError" xml:space="preserve">
+    <value>PLC settings save error: {0}</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesLoadError" xml:space="preserve">
+    <value>Material names loading error: {0}</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesSavedSuccessfully" xml:space="preserve">
+    <value>Material names saved successfully!</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesSaveError" xml:space="preserve">
+    <value>Material names save error: {0}</value>
+  </data>
+  <data name="SettingsWindow.TimeZoneSettingsLoadError" xml:space="preserve">
+    <value>Time zone settings loading error: {0}</value>
+  </data>
+  <data name="SettingsWindow.DaylightSavingTime" xml:space="preserve">
+    <value>Daylight saving time: {0}</value>
+  </data>
+  <data name="SettingsWindow.Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="SettingsWindow.No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="SettingsWindow.TimeZoneTestError" xml:space="preserve">
+    <value>Time zone test error: {0}</value>
+  </data>
+  <data name="SettingsWindow.TimeZoneSettingsSavedSuccessfully" xml:space="preserve">
+    <value>Time zone settings saved successfully!\n\nSelected Time Zone: {0}\nAuto Conversion: {1}</value>
+  </data>
+  <data name="SettingsWindow.PleaseSelectTimeZone" xml:space="preserve">
+    <value>Please select a time zone!</value>
+  </data>
+  <data name="SettingsWindow.TimeZoneSettingsSaveError" xml:space="preserve">
+    <value>Time zone settings save error: {0}</value>
+  </data>
+  <data name="SettingsWindow.Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  
+  <!-- UnifiedBatchTrackingWindow Additional Messages -->
+  <data name="UnifiedBatchTrackingWindow.StartupError" xml:space="preserve">
+    <value>UnifiedBatchTrackingWindow startup error:\n{0}\n\nStack Trace:\n{1}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.LastRefresh" xml:space="preserve">
+    <value>Last refresh: {0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Loading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1DataLoadError" xml:space="preserve">
+    <value>Error loading M1 batch data:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2DataLoadError" xml:space="preserve">
+    <value>Error loading M2 batch data:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.DeleteAllM1Confirmation" xml:space="preserve">
+    <value>{0} completed M1 batches will be deleted. Are you sure?</value>
+  </data>
+  
+  <!-- ReportsWindow Additional Messages -->
+  <data name="ReportsWindow.StartupError" xml:space="preserve">
+    <value>ReportsWindow startup error: {0}</value>
+  </data>
+  <data name="ReportsWindow.LoadError" xml:space="preserve">
+    <value>ReportsWindow loading error: {0}</value>
+  </data>
+  <data name="ReportsWindow.Aggregate" xml:space="preserve">
+    <value>Aggregate: {0} kg</value>
+  </data>
+  <data name="ReportsWindow.Pigment" xml:space="preserve">
+    <value>Pigment: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.TotalWater" xml:space="preserve">
+    <value>Total Water: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotal" xml:space="preserve">
+    <value>Pigment Total: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.TotalBatch" xml:space="preserve">
+    <value>Total Batch</value>
+  </data>
+  <data name="ReportsWindow.Cement" xml:space="preserve">
+    <value>Cement</value>
+  </data>
+  <data name="ReportsWindow.AggregateTotal" xml:space="preserve">
+    <value>Aggregate (Total)</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotalLabel" xml:space="preserve">
+    <value>Pigment (Total)</value>
+  </data>
+  <data name="ReportsWindow.TotalWaterLabel" xml:space="preserve">
+    <value>Total Water</value>
+  </data>
+  <data name="ReportsWindow.AverageMoisture" xml:space="preserve">
+    <value>Average Moisture</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotalName" xml:space="preserve">
+    <value>Pigment Total</value>
+  </data>
+  <data name="ReportsWindow.Mixer1DataLoaded" xml:space="preserve">
+    <value>Mixer1 data loaded: {0} batches</value>
+  </data>
+  <data name="ReportsWindow.Mixer1ReportLoadError" xml:space="preserve">
+    <value>Error loading Mixer1 reports:\n{0}</value>
+  </data>
+  <data name="ReportsWindow.Mixer2DataLoaded" xml:space="preserve">
+    <value>Mixer2 data loaded: {0} batches</value>
+  </data>
+  <data name="ReportsWindow.Mixer2ReportLoadError" xml:space="preserve">
+    <value>Error loading Mixer2 reports:\n{0}</value>
+  </data>
+  <data name="ReportsWindow.DeleteAllHistoryConfirmation" xml:space="preserve">
+    <value>All historical batch data (Mixer1+Mixer2) will be deleted. Are you sure?</value>
+  </data>
+  <data name="ReportsWindow.AllHistoryDeleted" xml:space="preserve">
+    <value>All historical data deleted</value>
+  </data>
+  <data name="ReportsWindow.DesktopFolderNotFound" xml:space="preserve">
+    <value>Desktop folder not found</value>
+  </data>
+  <data name="ReportsWindow.LoadDataFirst" xml:space="preserve">
+    <value>Load Mixer1 or Mixer2 data first</value>
+  </data>
+  <data name="ReportsWindow.LoadDataFirstMessage" xml:space="preserve">
+    <value>You need to load Mixer1 or Mixer2 data before creating PDF report.</value>
+  </data>
+  <data name="ReportsWindow.DataReadError" xml:space="preserve">
+    <value>Data read error:\n{0}</value>
+  </data>
+  <data name="ReportsWindow.DataError" xml:space="preserve">
+    <value>Data Error</value>
+  </data>
+  <data name="ReportsWindow.Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="ReportsWindow.Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="ReportsWindow.CementType" xml:space="preserve">
+    <value>Cement Type</value>
+  </data>
+  <data name="ReportsWindow.Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="ReportsWindow.AggregateType" xml:space="preserve">
+    <value>Aggregate Type</value>
+  </data>
+  <data name="ReportsWindow.AdmixtureType" xml:space="preserve">
+    <value>Admixture Type</value>
+  </data>
+  <data name="ReportsWindow.PigmentType" xml:space="preserve">
+    <value>Pigment Type</value>
+  </data>
+  
+  <!-- UnifiedBatchTrackingWindow Additional Messages -->
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeleteConfirmation" xml:space="preserve">
+    <value>Delete M1 Batch ID {0}?</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BatchDelete" xml:space="preserve">
+    <value>Batch Delete</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeletedSuccessfully" xml:space="preserve">
+    <value>M1 Batch deleted successfully.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Successful" xml:space="preserve">
+    <value>Successful</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BatchNotFound" xml:space="preserve">
+    <value>Batch not found. It may have been already deleted.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeleteError" xml:space="preserve">
+    <value>M1 Batch delete error:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.PleaseSelectM1BatchToDelete" xml:space="preserve">
+    <value>Please select M1 batch to delete.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeleteConfirmation" xml:space="preserve">
+    <value>Delete M2 Batch ID {0}?</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeletedSuccessfully" xml:space="preserve">
+    <value>M2 Batch deleted successfully.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeleteError" xml:space="preserve">
+    <value>M2 Batch delete error:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.PleaseSelectM2BatchToDelete" xml:space="preserve">
+    <value>Please select M2 batch to delete.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Status.Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Status.Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.NoCompletedM1BatchesToDelete" xml:space="preserve">
+    <value>No completed M1 batches found to delete.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BulkDelete" xml:space="preserve">
+    <value>Bulk Delete</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchesDeletedSuccessfully" xml:space="preserve">
+    <value>{0} M1 batches deleted successfully.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BulkDeleteError" xml:space="preserve">
+    <value>Bulk delete error:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.NoCompletedM2BatchesToDelete" xml:space="preserve">
+    <value>No completed M2 batches found to delete.</value>
+  </data>
+  
+  <!-- Status Messages -->
+  <data name="Status.YatayKovada" xml:space="preserve">
+    <value>Horizontal Bucket</value>
+  </data>
+  <data name="Status.DikeyKovada" xml:space="preserve">
+    <value>Vertical Bucket</value>
+  </data>
+  <data name="Status.BeklemeBunkerinde" xml:space="preserve">
+    <value>Waiting Bunker</value>
+  </data>
+  <data name="Status.Mixerde" xml:space="preserve">
+    <value>Mixing</value>
+  </data>
+  
+  <!-- ConcreteBatchDetailWindow Messages -->
+  <data name="ConcreteBatchDetailWindow.LoadcellWater" xml:space="preserve">
+    <value>Loadcell Water</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.PulseWater" xml:space="preserve">
+    <value>Pulse Water</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.TotalWater" xml:space="preserve">
+    <value>Total Water</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.Moisture" xml:space="preserve">
+    <value>Moisture</value>
+  </data>
+  
+  <!-- ConcreteSimulation Messages -->
+  <data name="ConcreteSimulation.Mixer1BatchError" xml:space="preserve">
+    <value>Mixer1 Batch Error</value>
+  </data>
+  <data name="ConcreteSimulation.AggregateAliases" xml:space="preserve">
+    <value>Aggregate aliases</value>
+  </data>
+  <data name="ConcreteSimulation.AdmixtureAliases" xml:space="preserve">
+    <value>Admixture aliases</value>
+  </data>
+  <data name="ConcreteSimulation.Mixer1BatchSaved" xml:space="preserve">
+    <value>Mixer1 batch saved successfully</value>
+  </data>
+  <data name="ConcreteSimulation.Mixer1BatchSaveError" xml:space="preserve">
+    <value>Mixer1 batch save error</value>
+  </data>
+  <data name="ConcreteSimulation.InnerException" xml:space="preserve">
+    <value>Inner Exception</value>
+  </data>
+  <data name="ConcreteSimulation.BatchLoadedWithCements" xml:space="preserve">
+    <value>Batch loaded with cement collection. Cement count</value>
+  </data>
+  <data name="ConcreteSimulation.Cement" xml:space="preserve">
+    <value>Cement</value>
+  </data>
+  <data name="ConcreteSimulation.BatchReloadFailed" xml:space="preserve">
+    <value>Batch reload failed</value>
+  </data>
+  <data name="ConcreteSimulation.CementConsumptionSaveError" xml:space="preserve">
+    <value>Cement consumption save error</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.ProcessingError" xml:space="preserve">
+    <value>Mixer2 processing error</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.HorizontalBucketNewBatch" xml:space="preserve">
+    <value>Horizontal bucket - New batch created. Status: In Horizontal Bucket</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.VerticalBucketMoved" xml:space="preserve">
+    <value>Vertical bucket - Batches moved to vertical bucket. Status: In Vertical Bucket</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.WaitingBunkerMoved" xml:space="preserve">
+    <value>Waiting bunker - Batches moved to waiting bunker. Status: In Waiting Bunker</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.BatchNumber" xml:space="preserve">
+    <value>Batch #</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.CementType" xml:space="preserve">
+    <value>Cement</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.CementPercent" xml:space="preserve">
+    <value>Cement %</value>
+  </data>
+  <data name="SettingsWindow.ConnectingToPlc" xml:space="preserve">
+    <value>Connecting to PLC...</value>
+  </data>
+  <data name="SettingsWindow.ErrorOccurred" xml:space="preserve">
+    <value>Error occurred</value>
+  </data>
+  <data name="SettingsWindow.Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="SettingsWindow.PlcIpEmptyError" xml:space="preserve">
+    <value>Error: PLC IP address cannot be empty!</value>
+  </data>
+  <data name="SettingsWindow.InvalidIpFormatError" xml:space="preserve">
+    <value>Error: Invalid IP address format!</value>
+  </data>
+  <data name="SettingsWindow.InvalidPortError" xml:space="preserve">
+    <value>Error: Invalid port number! (Must be between 1-65535)</value>
+  </data>
+  <data name="SettingsWindow.InvalidRegisterError" xml:space="preserve">
+    <value>Error: Invalid register address! (Must be between 0-65535)</value>
+  </data>
+  <data name="SettingsWindow.InvalidWordCountError" xml:space="preserve">
+    <value>Error: Invalid word count! (Must be between 1-100)</value>
+  </data>
+  <data name="SettingsWindow.PlcTestStarting" xml:space="preserve">
+    <value>PLC Test Starting...</value>
+  </data>
+  <data name="SettingsWindow.PlcConnectionSuccessful" xml:space="preserve">
+    <value>PLC connection successful!</value>
+  </data>
+  <data name="SettingsWindow.TestCompleted" xml:space="preserve">
+    <value>Test completed!</value>
+  </data>
+  <data name="SettingsWindow.PlcTestError" xml:space="preserve">
+    <value>PLC Test Error</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.MixerAggregateMoved" xml:space="preserve">
+    <value>Mixer aggregate - Batches moved to mixer. Status: In Mixer</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.MixerCementSaved" xml:space="preserve">
+    <value>Mixer cement - Cement data saved</value>
+  </data>
+</root>

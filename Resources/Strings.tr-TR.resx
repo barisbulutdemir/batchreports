@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  
+  <!-- Ana Pencere -->
+  <data name="MainWindow.Title" xml:space="preserve">
+    <value>Üretim Takip Sistemi</value>
+  </data>
+  <data name="MainWindow.ShiftManagement" xml:space="preserve">
+    <value>Vardiya Yönetimi</value>
+  </data>
+  <data name="MainWindow.ProductionInfo" xml:space="preserve">
+    <value>Üretim Bilgileri</value>
+  </data>
+  <data name="MainWindow.StartShift" xml:space="preserve">
+    <value>Vardiyayı Başlat</value>
+  </data>
+  <data name="MainWindow.EndShift" xml:space="preserve">
+    <value>Vardiyayı Bitir</value>
+  </data>
+  <data name="MainWindow.ShiftHistory" xml:space="preserve">
+    <value>Vardiya Geçmişi</value>
+  </data>
+  <data name="MainWindow.PlcTest" xml:space="preserve">
+    <value>🔧 PLC Test Sayfası</value>
+  </data>
+  <data name="MainWindow.TotalProduction" xml:space="preserve">
+    <value>Toplam Üretim</value>
+  </data>
+  <data name="MainWindow.Logs" xml:space="preserve">
+    <value>Loglar</value>
+  </data>
+  <data name="MainWindow.DailyPalletProduction" xml:space="preserve">
+    <value>Günlük Palet Üretimi</value>
+  </data>
+  <data name="MainWindow.ShiftStart" xml:space="preserve">
+    <value>Vardiya Başlangıç</value>
+  </data>
+  <data name="MainWindow.ProductionStart" xml:space="preserve">
+    <value>Üretim Başlangıç</value>
+  </data>
+  <data name="MainWindow.NotStarted" xml:space="preserve">
+    <value>Başlatılmadı</value>
+  </data>
+  <data name="MainWindow.Pallet" xml:space="preserve">
+    <value>palet</value>
+  </data>
+  <data name="MainWindow.Add" xml:space="preserve">
+    <value>Ekle</value>
+  </data>
+  <data name="MainWindow.Delete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="MainWindow.PlcStatus" xml:space="preserve">
+    <value>PLC: Bağlantı Kontrol Ediliyor...</value>
+  </data>
+  <data name="MainWindow.PlcConnected" xml:space="preserve">
+    <value>PLC: Bağlı</value>
+  </data>
+  <data name="MainWindow.PlcDisconnected" xml:space="preserve">
+    <value>PLC: Bağlantı Yok</value>
+  </data>
+  <data name="MainWindow.PlcError" xml:space="preserve">
+    <value>PLC: Hata</value>
+  </data>
+  
+  <!-- Dil Seçimi -->
+  <data name="Language.Turkish" xml:space="preserve">
+    <value>Türkçe</value>
+  </data>
+  <data name="Language.English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Language.SelectLanguage" xml:space="preserve">
+    <value>Dil Seçimi</value>
+  </data>
+  
+  <!-- Mesajlar -->
+  <data name="Message.SelectOperator" xml:space="preserve">
+    <value>Lütfen operatör seçiniz!</value>
+  </data>
+  <data name="Message.EndShiftConfirm" xml:space="preserve">
+    <value>Vardiyayı bitirmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="Message.ShiftEnded" xml:space="preserve">
+    <value>Vardiya Bitir</value>
+  </data>
+  <data name="Message.Warning" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="Message.Error" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="Message.Question" xml:space="preserve">
+    <value>Soru</value>
+  </data>
+  
+  <!-- PLC Test -->
+  <data name="PlcTest.Title" xml:space="preserve">
+    <value>PLC Test Sayfası</value>
+  </data>
+  <data name="PlcTest.IpAddress" xml:space="preserve">
+    <value>PLC IP Adresi:</value>
+  </data>
+  <data name="PlcTest.Port" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="PlcTest.RegisterAddress" xml:space="preserve">
+    <value>Register Adresi:</value>
+  </data>
+  <data name="PlcTest.WordCount" xml:space="preserve">
+    <value>Kelime Sayısı:</value>
+  </data>
+  <data name="PlcTest.TestButton" xml:space="preserve">
+    <value>PLC Test Et</value>
+  </data>
+  <data name="PlcTest.Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="PlcTest.Result" xml:space="preserve">
+    <value>Sonuç:</value>
+  </data>
+  <data name="PlcTest.Status" xml:space="preserve">
+    <value>Durum:</value>
+  </data>
+  <data name="PlcTest.Testing" xml:space="preserve">
+    <value>Test ediliyor...</value>
+  </data>
+  <data name="PlcTest.Success" xml:space="preserve">
+    <value>Başarılı</value>
+  </data>
+  <data name="PlcTest.Failed" xml:space="preserve">
+    <value>Başarısız</value>
+  </data>
+  
+  <!-- Vardiya Geçmişi -->
+  <data name="ShiftHistory.Title" xml:space="preserve">
+    <value>Vardiya Geçmişi</value>
+  </data>
+  <data name="ShiftHistory.Close" xml:space="preserve">
+    <value>Kapat</value>
+  </data>
+  <data name="ShiftHistory.NoRecords" xml:space="preserve">
+    <value>Henüz vardiya kaydı bulunamadı.</value>
+  </data>
+  <data name="ShiftHistory.RecordsShowing" xml:space="preserve">
+    <value>kayıt gösteriliyor</value>
+  </data>
+  <data name="ShiftHistory.TotalProduction" xml:space="preserve">
+    <value>Toplam Üretim:</value>
+  </data>
+  <data name="ShiftHistory.ShiftDuration" xml:space="preserve">
+    <value>Vardiya Süresi:</value>
+  </data>
+  <data name="ShiftHistory.ProductionDuration" xml:space="preserve">
+    <value>Üretim Süresi:</value>
+  </data>
+  <data name="ShiftHistory.Operator" xml:space="preserve">
+    <value>Operatör:</value>
+  </data>
+  <data name="ShiftHistory.StartTime" xml:space="preserve">
+    <value>Başlangıç:</value>
+  </data>
+  <data name="MainWindow.InitializeComponentCompleted" xml:space="preserve">
+    <value>InitializeComponent tamamlandı</value>
+  </data>
+  <data name="MainWindow.InitializeDatabaseCompleted" xml:space="preserve">
+    <value>InitializeDatabase tamamlandı</value>
+  </data>
+  <data name="MainWindow.DatabaseCheckCompleted" xml:space="preserve">
+    <value>Veritabanı tabloları kontrol tamamlandı</value>
+  </data>
+  <data name="MainWindow.InitializeServicesCompleted" xml:space="preserve">
+    <value>InitializeServices tamamlandı</value>
+  </data>
+  <data name="MainWindow.InitializeTimerCompleted" xml:space="preserve">
+    <value>InitializeTimer tamamlandı</value>
+  </data>
+  <data name="MainWindow.RecoverOpenBatchesTriggered" xml:space="preserve">
+    <value>RecoverOpenBatchesAsync tetiklendi</value>
+  </data>
+  <data name="MainWindow.LoadInitialDataCompleted" xml:space="preserve">
+    <value>LoadInitialData tamamlandı</value>
+  </data>
+  <data name="MainWindow.InitializeLocalizationCompleted" xml:space="preserve">
+    <value>InitializeLocalization tamamlandı</value>
+  </data>
+  <data name="MainWindow.ConstructorCompleted" xml:space="preserve">
+    <value>MainWindow constructor başarıyla tamamlandı</value>
+  </data>
+  <data name="MainWindow.ConstructorError" xml:space="preserve">
+    <value>MainWindow constructor hatası</value>
+  </data>
+  <data name="MainWindow.LogCleared" xml:space="preserve">
+    <value>Log temizlendi</value>
+  </data>
+  <data name="MainWindow.Status.WeighingBucket" xml:space="preserve">
+    <value>Weighing Bucket</value>
+  </data>
+  <data name="MainWindow.Status.WaitingBunker" xml:space="preserve">
+    <value>Waiting Bunker</value>
+  </data>
+  <data name="MainWindow.Status.InMixer" xml:space="preserve">
+    <value>Mixing</value>
+  </data>
+  <data name="MainWindow.Status.HorizontalBucket" xml:space="preserve">
+    <value>Horizontal Bucket</value>
+  </data>
+  <data name="MainWindow.Status.VerticalBucket" xml:space="preserve">
+    <value>Vertical Bucket</value>
+  </data>
+  <!-- SettingsWindow Messages -->
+  <data name="SettingsWindow.DataLoadError" xml:space="preserve">
+    <value>Veri yükleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.MoldListLoadError" xml:space="preserve">
+    <value>Mold list loading error: {0}</value>
+  </data>
+  <data name="SettingsWindow.PleaseSelectMoldToDelete" xml:space="preserve">
+    <value>Please select a mold to delete!</value>
+  </data>
+  <data name="SettingsWindow.MoldDeleteConfirmation" xml:space="preserve">
+    <value>Mold Deletion Confirmation</value>
+  </data>
+  <data name="SettingsWindow.MoldDeletedSuccessfully" xml:space="preserve">
+    <value>Mold '{0}' deleted successfully!</value>
+  </data>
+  <data name="SettingsWindow.MoldDeleteError" xml:space="preserve">
+    <value>Mold deletion error: {0}</value>
+  </data>
+  <data name="SettingsWindow.OperatorListLoadError" xml:space="preserve">
+    <value>Operatör listesi yükleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.OperatorAddedSuccessfully" xml:space="preserve">
+    <value>'{0}' operatörü başarıyla eklendi!</value>
+  </data>
+  <data name="SettingsWindow.OperatorAddError" xml:space="preserve">
+    <value>Operatör ekleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.PleaseSelectOperatorToDelete" xml:space="preserve">
+    <value>Lütfen silinecek operatörü seçin!</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeleteConfirmation" xml:space="preserve">
+    <value>Operatör Silme Onayı</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeletedSuccessfully" xml:space="preserve">
+    <value>'{0}' operatörü başarıyla silindi!</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeleteError" xml:space="preserve">
+    <value>Operatör silme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.ErrorOccurred" xml:space="preserve">
+    <value>Hata oluştu</value>
+  </data>
+  <data name="SettingsWindow.InvalidIpAddress" xml:space="preserve">
+    <value>Geçersiz IP adresi</value>
+  </data>
+  <data name="SettingsWindow.InvalidPort" xml:space="preserve">
+    <value>Geçersiz port</value>
+  </data>
+  <data name="SettingsWindow.InvalidRegisterAddress" xml:space="preserve">
+    <value>Geçersiz register adresi</value>
+  </data>
+  <data name="SettingsWindow.InvalidWordCount" xml:space="preserve">
+    <value>Geçersiz word sayısı</value>
+  </data>
+  <data name="SettingsWindow.TestSuccessful" xml:space="preserve">
+    <value>Test başarılı</value>
+  </data>
+  <data name="SettingsWindow.TestFailed" xml:space="preserve">
+    <value>Test başarısız</value>
+  </data>
+  <data name="SettingsWindow.ReadyForTest" xml:space="preserve">
+    <value>Hazır - Test için bilgileri girin</value>
+  </data>
+  <data name="SettingsWindow.NewMold" xml:space="preserve">
+    <value>New Mold</value>
+  </data>
+  <data name="SettingsWindow.MoldAddedSuccessfully" xml:space="preserve">
+    <value>Mold '{0}' added successfully!</value>
+  </data>
+  <data name="SettingsWindow.MoldAddError" xml:space="preserve">
+    <value>Mold addition error: {0}</value>
+  </data>
+  <data name="SettingsWindow.Confirmation" xml:space="preserve">
+    <value>Onay</value>
+  </data>
+  <data name="SettingsWindow.HistoryCleared" xml:space="preserve">
+    <value>Geçmiş Temizlendi</value>
+  </data>
+  <data name="SettingsWindow.HistoryClearError" xml:space="preserve">
+    <value>Geçmiş temizleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsLoadError" xml:space="preserve">
+    <value>PLC ayarları yükleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsSavedSuccessfully" xml:space="preserve">
+    <value>PLC ayarları başarıyla kaydedildi!</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsSaveError" xml:space="preserve">
+    <value>PLC ayarları kaydetme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesLoadError" xml:space="preserve">
+    <value>Malzeme isimleri yükleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesSavedSuccessfully" xml:space="preserve">
+    <value>Malzeme isimleri başarıyla kaydedildi!</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesSaveError" xml:space="preserve">
+    <value>Malzeme isimleri kaydetme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.TimeZoneSettingsLoadError" xml:space="preserve">
+    <value>Saat dilimi ayarları yükleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.DaylightSavingTime" xml:space="preserve">
+    <value>Yaz saati uygulaması: {0}</value>
+  </data>
+  <data name="SettingsWindow.Yes" xml:space="preserve">
+    <value>Evet</value>
+  </data>
+  <data name="SettingsWindow.No" xml:space="preserve">
+    <value>Hayır</value>
+  </data>
+  
+  <!-- UnifiedBatchTrackingWindow Messages -->
+  <data name="UnifiedBatchTrackingWindow.CriticalError" xml:space="preserve">
+    <value>Kritik Hata</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Error" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Status.Completed" xml:space="preserve">
+    <value>Tamamlandı</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeleteConfirmation" xml:space="preserve">
+    <value>M1 Batch ID {0} silinsin mi?</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BatchDelete" xml:space="preserve">
+    <value>Batch Silme</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeletedSuccessfully" xml:space="preserve">
+    <value>M1 Batch başarıyla silindi.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Successful" xml:space="preserve">
+    <value>Başarılı</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BatchNotFound" xml:space="preserve">
+    <value>Batch bulunamadı. Zaten silinmiş olabilir.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Warning" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeleteError" xml:space="preserve">
+    <value>M1 Batch silme hatası:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.PleaseSelectM1BatchToDelete" xml:space="preserve">
+    <value>Lütfen silinecek M1 batch'i seçin.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeleteConfirmation" xml:space="preserve">
+    <value>M2 Batch ID {0} silinsin mi?</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeletedSuccessfully" xml:space="preserve">
+    <value>M2 Batch başarıyla silindi.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeleteError" xml:space="preserve">
+    <value>M2 Batch silme hatası:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.PleaseSelectM2BatchToDelete" xml:space="preserve">
+    <value>Lütfen silinecek M2 batch'i seçin.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Status.Ready" xml:space="preserve">
+    <value>Harç Hazır</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.NoCompletedM1BatchesToDelete" xml:space="preserve">
+    <value>Silinecek tamamlanmış M1 batch bulunamadı.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Information" xml:space="preserve">
+    <value>Bilgi</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BulkDelete" xml:space="preserve">
+    <value>Toplu Silme</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchesDeletedSuccessfully" xml:space="preserve">
+    <value>{0} adet M1 batch başarıyla silindi.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BulkDeleteError" xml:space="preserve">
+    <value>Toplu silme hatası:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.NoCompletedM2BatchesToDelete" xml:space="preserve">
+    <value>Silinecek tamamlanmış M2 batch bulunamadı.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchesDeletedSuccessfully" xml:space="preserve">
+    <value>{0} adet M2 batch başarıyla silindi.</value>
+  </data>
+  
+  <!-- ReportsWindow Messages -->
+  <data name="ReportsWindow.StartupError" xml:space="preserve">
+    <value>ReportsWindow başlatma hatası: {0}</value>
+  </data>
+  <data name="ReportsWindow.LoadError" xml:space="preserve">
+    <value>ReportsWindow yükleme hatası: {0}</value>
+  </data>
+  <data name="ReportsWindow.Aggregate" xml:space="preserve">
+    <value>Agrega: {0} kg</value>
+  </data>
+  <data name="ReportsWindow.Pigment" xml:space="preserve">
+    <value>Pigment: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.TotalWater" xml:space="preserve">
+    <value>Toplam Su: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotal" xml:space="preserve">
+    <value>Pigment Toplam: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.TotalBatch" xml:space="preserve">
+    <value>Toplam Batch</value>
+  </data>
+  <data name="ReportsWindow.Cement" xml:space="preserve">
+    <value>Çimento</value>
+  </data>
+  <data name="ReportsWindow.AggregateTotal" xml:space="preserve">
+    <value>Agrega (Toplam)</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotalLabel" xml:space="preserve">
+    <value>Pigment (Toplam)</value>
+  </data>
+  <data name="ReportsWindow.TotalWaterLabel" xml:space="preserve">
+    <value>Toplam Su</value>
+  </data>
+  <data name="ReportsWindow.AverageMoisture" xml:space="preserve">
+    <value>Nem Ortalama</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotalName" xml:space="preserve">
+    <value>Pigment Toplam</value>
+  </data>
+  <data name="ReportsWindow.Mixer1DataLoaded" xml:space="preserve">
+    <value>Mixer1 veriler yüklendi: {0} batch</value>
+  </data>
+  <data name="ReportsWindow.Mixer1ReportLoadError" xml:space="preserve">
+    <value>Mixer1 raporları yüklenirken hata oluştu:\n{0}</value>
+  </data>
+  <data name="ReportsWindow.Mixer2DataLoaded" xml:space="preserve">
+    <value>Mixer2 verileri yüklendi: {0} batch</value>
+  </data>
+  <data name="ReportsWindow.Mixer2ReportLoadError" xml:space="preserve">
+    <value>Mixer2 raporları yüklenirken hata oluştu:\n{0}</value>
+  </data>
+  <data name="ReportsWindow.DeleteAllHistoryConfirmation" xml:space="preserve">
+    <value>Tüm geçmiş batch verileri (Mixer1+Mixer2) silinecek. Emin misiniz?</value>
+  </data>
+  <data name="ReportsWindow.AllHistoryDeleted" xml:space="preserve">
+    <value>Tüm geçmiş veriler silindi</value>
+  </data>
+  <data name="ReportsWindow.DesktopFolderNotFound" xml:space="preserve">
+    <value>Desktop klasörü bulunamadı</value>
+  </data>
+  
+  <!-- Common Messages -->
+  <data name="Common.Error" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="Common.Warning" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="Common.Successful" xml:space="preserve">
+    <value>Başarılı</value>
+  </data>
+  <data name="Common.Information" xml:space="preserve">
+    <value>Bilgi</value>
+  </data>
+  <data name="SettingsWindow.MoldDeleteConfirmationText" xml:space="preserve">
+    <value>Are you sure you want to delete the mold '{0}'?\n\nThis action cannot be undone!</value>
+  </data>
+  <data name="SettingsWindow.OperatorListLoadError" xml:space="preserve">
+    <value>Operatör listesi yükleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.OperatorAddedSuccessfully" xml:space="preserve">
+    <value>'{0}' operatörü başarıyla eklendi!</value>
+  </data>
+  <data name="SettingsWindow.OperatorAddError" xml:space="preserve">
+    <value>Operatör ekleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.PleaseSelectOperatorToDelete" xml:space="preserve">
+    <value>Lütfen silinecek operatörü seçin!</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeleteConfirmation" xml:space="preserve">
+    <value>Operatör Silme Onayı</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeleteConfirmationText" xml:space="preserve">
+    <value>'{0}' adlı operatörü silmek istediğinizden emin misiniz?\n\nBu işlem geri alınamaz!</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeletedSuccessfully" xml:space="preserve">
+    <value>'{0}' operatörü başarıyla silindi!</value>
+  </data>
+  <data name="SettingsWindow.OperatorDeleteError" xml:space="preserve">
+    <value>Operatör silme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.ErrorOccurred" xml:space="preserve">
+    <value>Hata oluştu</value>
+  </data>
+  <data name="SettingsWindow.InvalidIpAddress" xml:space="preserve">
+    <value>Geçersiz IP adresi</value>
+  </data>
+  <data name="SettingsWindow.InvalidPort" xml:space="preserve">
+    <value>Geçersiz port</value>
+  </data>
+  <data name="SettingsWindow.InvalidRegisterAddress" xml:space="preserve">
+    <value>Geçersiz register adresi</value>
+  </data>
+  <data name="SettingsWindow.InvalidWordCount" xml:space="preserve">
+    <value>Geçersiz word sayısı</value>
+  </data>
+  <data name="SettingsWindow.Port" xml:space="preserve">
+    <value>Port: {0}</value>
+  </data>
+  <data name="SettingsWindow.Register" xml:space="preserve">
+    <value>Register: {0}</value>
+  </data>
+  <data name="SettingsWindow.WordCount" xml:space="preserve">
+    <value>Word Count: {0}</value>
+  </data>
+  <data name="SettingsWindow.Word" xml:space="preserve">
+    <value>Word {0}: {1} (0x{1:X4})</value>
+  </data>
+  <data name="SettingsWindow.TestSuccessful" xml:space="preserve">
+    <value>Test başarılı</value>
+  </data>
+  <data name="SettingsWindow.TestFailed" xml:space="preserve">
+    <value>Test başarısız</value>
+  </data>
+  <data name="SettingsWindow.ReadyForTest" xml:space="preserve">
+    <value>Hazır - Test için bilgileri girin</value>
+  </data>
+  <data name="SettingsWindow.NewMold" xml:space="preserve">
+    <value>New Mold</value>
+  </data>
+  <data name="SettingsWindow.MoldAddedSuccessfully" xml:space="preserve">
+    <value>Mold '{0}' added successfully!</value>
+  </data>
+  <data name="SettingsWindow.MoldAddError" xml:space="preserve">
+    <value>Mold addition error: {0}</value>
+  </data>
+  <data name="SettingsWindow.Confirmation" xml:space="preserve">
+    <value>Onay</value>
+  </data>
+  <data name="SettingsWindow.HistoryCleared" xml:space="preserve">
+    <value>Geçmiş Temizlendi</value>
+  </data>
+  <data name="SettingsWindow.HistoryClearError" xml:space="preserve">
+    <value>Geçmiş temizleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsLoadError" xml:space="preserve">
+    <value>PLC ayarları yükleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsSavedSuccessfully" xml:space="preserve">
+    <value>PLC ayarları başarıyla kaydedildi!</value>
+  </data>
+  <data name="SettingsWindow.PlcSettingsSaveError" xml:space="preserve">
+    <value>PLC ayarları kaydetme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesLoadError" xml:space="preserve">
+    <value>Malzeme isimleri yükleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesSavedSuccessfully" xml:space="preserve">
+    <value>Malzeme isimleri başarıyla kaydedildi!</value>
+  </data>
+  <data name="SettingsWindow.MaterialNamesSaveError" xml:space="preserve">
+    <value>Malzeme isimleri kaydetme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.TimeZoneSettingsLoadError" xml:space="preserve">
+    <value>Saat dilimi ayarları yükleme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.DaylightSavingTime" xml:space="preserve">
+    <value>Yaz saati uygulaması: {0}</value>
+  </data>
+  <data name="SettingsWindow.Yes" xml:space="preserve">
+    <value>Evet</value>
+  </data>
+  <data name="SettingsWindow.No" xml:space="preserve">
+    <value>Hayır</value>
+  </data>
+  <data name="SettingsWindow.TimeZoneTestError" xml:space="preserve">
+    <value>Saat dilimi test hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.TimeZoneSettingsSavedSuccessfully" xml:space="preserve">
+    <value>Saat dilimi ayarları başarıyla kaydedildi!\n\nSeçilen Saat Dilimi: {0}\nOtomatik Dönüşüm: {1}</value>
+  </data>
+  <data name="SettingsWindow.PleaseSelectTimeZone" xml:space="preserve">
+    <value>Lütfen bir saat dilimi seçin!</value>
+  </data>
+  <data name="SettingsWindow.TimeZoneSettingsSaveError" xml:space="preserve">
+    <value>Saat dilimi ayarları kaydetme hatası: {0}</value>
+  </data>
+  <data name="SettingsWindow.Active" xml:space="preserve">
+    <value>Aktif</value>
+  </data>
+  
+  <!-- UnifiedBatchTrackingWindow Additional Messages -->
+  <data name="UnifiedBatchTrackingWindow.StartupError" xml:space="preserve">
+    <value>UnifiedBatchTrackingWindow başlatma hatası:\n{0}\n\nStack Trace:\n{1}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.LastRefresh" xml:space="preserve">
+    <value>Son yenileme: {0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Loading" xml:space="preserve">
+    <value>Yükleniyor...</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1DataLoadError" xml:space="preserve">
+    <value>M1 batch verileri yüklenirken hata oluştu:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2DataLoadError" xml:space="preserve">
+    <value>M2 batch verileri yüklenirken hata oluştu:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.DeleteAllM1Confirmation" xml:space="preserve">
+    <value>{0} adet tamamlanmış M1 batch silinecek. Emin misiniz?</value>
+  </data>
+  
+  <!-- ReportsWindow Additional Messages -->
+  <data name="ReportsWindow.StartupError" xml:space="preserve">
+    <value>ReportsWindow başlatma hatası: {0}</value>
+  </data>
+  <data name="ReportsWindow.LoadError" xml:space="preserve">
+    <value>ReportsWindow yükleme hatası: {0}</value>
+  </data>
+  <data name="ReportsWindow.Aggregate" xml:space="preserve">
+    <value>Agrega: {0} kg</value>
+  </data>
+  <data name="ReportsWindow.Pigment" xml:space="preserve">
+    <value>Pigment: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.TotalWater" xml:space="preserve">
+    <value>Toplam Su: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotal" xml:space="preserve">
+    <value>Pigment Toplam: {0:0.0} kg</value>
+  </data>
+  <data name="ReportsWindow.TotalBatch" xml:space="preserve">
+    <value>Toplam Batch</value>
+  </data>
+  <data name="ReportsWindow.Cement" xml:space="preserve">
+    <value>Çimento</value>
+  </data>
+  <data name="ReportsWindow.AggregateTotal" xml:space="preserve">
+    <value>Agrega (Toplam)</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotalLabel" xml:space="preserve">
+    <value>Pigment (Toplam)</value>
+  </data>
+  <data name="ReportsWindow.TotalWaterLabel" xml:space="preserve">
+    <value>Toplam Su</value>
+  </data>
+  <data name="ReportsWindow.AverageMoisture" xml:space="preserve">
+    <value>Nem Ortalama</value>
+  </data>
+  <data name="ReportsWindow.PigmentTotalName" xml:space="preserve">
+    <value>Pigment Toplam</value>
+  </data>
+  <data name="ReportsWindow.Mixer1DataLoaded" xml:space="preserve">
+    <value>Mixer1 veriler yüklendi: {0} batch</value>
+  </data>
+  <data name="ReportsWindow.Mixer1ReportLoadError" xml:space="preserve">
+    <value>Mixer1 raporları yüklenirken hata oluştu:\n{0}</value>
+  </data>
+  <data name="ReportsWindow.Mixer2DataLoaded" xml:space="preserve">
+    <value>Mixer2 verileri yüklendi: {0} batch</value>
+  </data>
+  <data name="ReportsWindow.Mixer2ReportLoadError" xml:space="preserve">
+    <value>Mixer2 raporları yüklenirken hata oluştu:\n{0}</value>
+  </data>
+  <data name="ReportsWindow.DeleteAllHistoryConfirmation" xml:space="preserve">
+    <value>Tüm geçmiş batch verileri (Mixer1+Mixer2) silinecek. Emin misiniz?</value>
+  </data>
+  <data name="ReportsWindow.AllHistoryDeleted" xml:space="preserve">
+    <value>Tüm geçmiş veriler silindi</value>
+  </data>
+  <data name="ReportsWindow.DesktopFolderNotFound" xml:space="preserve">
+    <value>Desktop klasörü bulunamadı</value>
+  </data>
+  <data name="ReportsWindow.LoadDataFirst" xml:space="preserve">
+    <value>Önce Mixer1 veya Mixer2 verilerini getirin</value>
+  </data>
+  <data name="ReportsWindow.LoadDataFirstMessage" xml:space="preserve">
+    <value>PDF raporu oluşturmadan önce Mixer1 veya Mixer2 verilerini getirmeniz gerekiyor.</value>
+  </data>
+  <data name="ReportsWindow.DataReadError" xml:space="preserve">
+    <value>Veri okuma hatası:\n{0}</value>
+  </data>
+  <data name="ReportsWindow.DataError" xml:space="preserve">
+    <value>Veri Hatası</value>
+  </data>
+  <data name="ReportsWindow.Information" xml:space="preserve">
+    <value>Bilgi</value>
+  </data>
+  <data name="ReportsWindow.Value" xml:space="preserve">
+    <value>Değer</value>
+  </data>
+  <data name="ReportsWindow.CementType" xml:space="preserve">
+    <value>Çimento Tipi</value>
+  </data>
+  <data name="ReportsWindow.Unknown" xml:space="preserve">
+    <value>Bilinmiyor</value>
+  </data>
+  <data name="ReportsWindow.AggregateType" xml:space="preserve">
+    <value>Agrega Tipi</value>
+  </data>
+  <data name="ReportsWindow.AdmixtureType" xml:space="preserve">
+    <value>Katkı Tipi</value>
+  </data>
+  <data name="ReportsWindow.PigmentType" xml:space="preserve">
+    <value>Boya Tipi</value>
+  </data>
+  
+  <!-- UnifiedBatchTrackingWindow Additional Messages -->
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeleteConfirmation" xml:space="preserve">
+    <value>M1 Batch ID {0} silinsin mi?</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BatchDelete" xml:space="preserve">
+    <value>Batch Silme</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeletedSuccessfully" xml:space="preserve">
+    <value>M1 Batch başarıyla silindi.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Successful" xml:space="preserve">
+    <value>Başarılı</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BatchNotFound" xml:space="preserve">
+    <value>Batch bulunamadı. Zaten silinmiş olabilir.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Warning" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchDeleteError" xml:space="preserve">
+    <value>M1 Batch silme hatası:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.PleaseSelectM1BatchToDelete" xml:space="preserve">
+    <value>Lütfen silinecek M1 batch'i seçin.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeleteConfirmation" xml:space="preserve">
+    <value>M2 Batch ID {0} silinsin mi?</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeletedSuccessfully" xml:space="preserve">
+    <value>M2 Batch başarıyla silindi.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M2BatchDeleteError" xml:space="preserve">
+    <value>M2 Batch silme hatası:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.PleaseSelectM2BatchToDelete" xml:space="preserve">
+    <value>Lütfen silinecek M2 batch'i seçin.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Status.Completed" xml:space="preserve">
+    <value>Tamamlandı</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Status.Ready" xml:space="preserve">
+    <value>Harç Hazır</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.NoCompletedM1BatchesToDelete" xml:space="preserve">
+    <value>Silinecek tamamlanmış M1 batch bulunamadı.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.Information" xml:space="preserve">
+    <value>Bilgi</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BulkDelete" xml:space="preserve">
+    <value>Toplu Silme</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.M1BatchesDeletedSuccessfully" xml:space="preserve">
+    <value>{0} adet M1 batch başarıyla silindi.</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.BulkDeleteError" xml:space="preserve">
+    <value>Toplu silme hatası:\n{0}</value>
+  </data>
+  <data name="UnifiedBatchTrackingWindow.NoCompletedM2BatchesToDelete" xml:space="preserve">
+    <value>Silinecek tamamlanmış M2 batch bulunamadı.</value>
+  </data>
+  
+  <!-- Status Messages -->
+  <data name="Status.YatayKovada" xml:space="preserve">
+    <value>Horizontal Bucket</value>
+  </data>
+  <data name="Status.DikeyKovada" xml:space="preserve">
+    <value>Vertical Bucket</value>
+  </data>
+  <data name="Status.BeklemeBunkerinde" xml:space="preserve">
+    <value>Waiting Bunker</value>
+  </data>
+  <data name="Status.Mixerde" xml:space="preserve">
+    <value>Mixing</value>
+  </data>
+  
+  <!-- ConcreteBatchDetailWindow Messages -->
+  <data name="ConcreteBatchDetailWindow.LoadcellWater" xml:space="preserve">
+    <value>Loadcell Su</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.PulseWater" xml:space="preserve">
+    <value>Puls Su</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.TotalWater" xml:space="preserve">
+    <value>Toplam Su</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.Moisture" xml:space="preserve">
+    <value>Nem</value>
+  </data>
+  
+  <!-- ConcreteSimulation Messages -->
+  <data name="ConcreteSimulation.Mixer1BatchError" xml:space="preserve">
+    <value>Mixer1 Batch Hatası</value>
+  </data>
+  <data name="ConcreteSimulation.AggregateAliases" xml:space="preserve">
+    <value>Agrega alias'ları</value>
+  </data>
+  <data name="ConcreteSimulation.AdmixtureAliases" xml:space="preserve">
+    <value>Katkı alias'ları</value>
+  </data>
+  <data name="ConcreteSimulation.Mixer1BatchSaved" xml:space="preserve">
+    <value>Mixer1 batch başarıyla kaydedildi</value>
+  </data>
+  <data name="ConcreteSimulation.Mixer1BatchSaveError" xml:space="preserve">
+    <value>Mixer1 batch kaydetme hatası</value>
+  </data>
+  <data name="ConcreteSimulation.InnerException" xml:space="preserve">
+    <value>Inner Exception</value>
+  </data>
+  <data name="ConcreteSimulation.BatchLoadedWithCements" xml:space="preserve">
+    <value>Batch çimento koleksiyonu ile yüklendi. Çimento sayısı</value>
+  </data>
+  <data name="ConcreteSimulation.Cement" xml:space="preserve">
+    <value>Çimento</value>
+  </data>
+  <data name="ConcreteSimulation.BatchReloadFailed" xml:space="preserve">
+    <value>Batch yeniden yüklenemedi</value>
+  </data>
+  <data name="ConcreteSimulation.CementConsumptionSaveError" xml:space="preserve">
+    <value>Çimento tüketimi kaydetme hatası</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.ProcessingError" xml:space="preserve">
+    <value>Mixer2 işleme hatası</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.HorizontalBucketNewBatch" xml:space="preserve">
+    <value>Yatay kova - Yeni batch oluşturuldu. Status: Yatay Kovada</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.VerticalBucketMoved" xml:space="preserve">
+    <value>Dikey kova - Batch'ler dikey kovaya taşındı. Status: Dikey Kovada</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.WaitingBunkerMoved" xml:space="preserve">
+    <value>Bekleme bunker - Batch'ler bekleme bunkerine taşındı. Status: Bekleme Bunkerinde</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.BatchNumber" xml:space="preserve">
+    <value>Batch #</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.CementType" xml:space="preserve">
+    <value>Çimento</value>
+  </data>
+  <data name="ConcreteBatchDetailWindow.CementPercent" xml:space="preserve">
+    <value>Çimento %</value>
+  </data>
+  <data name="SettingsWindow.ConnectingToPlc" xml:space="preserve">
+    <value>PLC'ye bağlanılıyor...</value>
+  </data>
+  <data name="SettingsWindow.ErrorOccurred" xml:space="preserve">
+    <value>Hata oluştu</value>
+  </data>
+  <data name="SettingsWindow.Details" xml:space="preserve">
+    <value>Detay</value>
+  </data>
+  <data name="SettingsWindow.PlcIpEmptyError" xml:space="preserve">
+    <value>Hata: PLC IP adresi boş olamaz!</value>
+  </data>
+  <data name="SettingsWindow.InvalidIpFormatError" xml:space="preserve">
+    <value>Hata: Geçersiz IP adresi formatı!</value>
+  </data>
+  <data name="SettingsWindow.InvalidPortError" xml:space="preserve">
+    <value>Hata: Geçersiz port numarası! (1-65535 arası olmalı)</value>
+  </data>
+  <data name="SettingsWindow.InvalidRegisterError" xml:space="preserve">
+    <value>Hata: Geçersiz register adresi! (0-65535 arası olmalı)</value>
+  </data>
+  <data name="SettingsWindow.InvalidWordCountError" xml:space="preserve">
+    <value>Hata: Geçersiz word sayısı! (1-100 arası olmalı)</value>
+  </data>
+  <data name="SettingsWindow.PlcTestStarting" xml:space="preserve">
+    <value>PLC Test Başlatılıyor...</value>
+  </data>
+  <data name="SettingsWindow.PlcConnectionSuccessful" xml:space="preserve">
+    <value>PLC bağlantısı başarılı!</value>
+  </data>
+  <data name="SettingsWindow.TestCompleted" xml:space="preserve">
+    <value>Test tamamlandı!</value>
+  </data>
+  <data name="SettingsWindow.PlcTestError" xml:space="preserve">
+    <value>PLC Test Hatası</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.MixerAggregateMoved" xml:space="preserve">
+    <value>Mixer agrega - Batch'ler mixere taşındı. Status: Mixerde</value>
+  </data>
+  <data name="Mixer2StatusBasedProcessor.MixerCementSaved" xml:space="preserve">
+    <value>Mixer çimento - Çimento verileri kaydedildi</value>
+  </data>
+</root>

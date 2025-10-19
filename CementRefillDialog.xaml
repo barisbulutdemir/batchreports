@@ -1,0 +1,88 @@
+<Window x:Class="takip.CementRefillDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cement Addition" Height="500" Width="400"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#F5F5F5">
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Başlık -->
+        <TextBlock Grid.Row="0" Text="🏗️ Cement Silo Addition" 
+                   FontSize="18" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- Form -->
+        <StackPanel Grid.Row="1">
+            <!-- Silo Bilgisi -->
+            <GroupBox Header="Silo Information" Margin="0,0,0,15">
+                <StackPanel Margin="10">
+                    <TextBlock x:Name="SiloInfoText" FontSize="14" FontWeight="Bold" 
+                              Foreground="#333333" TextWrapping="Wrap"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Ekleme Bilgileri -->
+            <GroupBox Header="Addition Information" Margin="0,0,0,15">
+                <StackPanel Margin="10">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Amount (kg):" Width="100" VerticalAlignment="Center"/>
+                        <TextBox x:Name="AmountTextBox" Width="150" Text="0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Operator:" Width="100" VerticalAlignment="Center"/>
+                        <TextBox x:Name="OperatorTextBox" Width="150" Text="Operator"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Shipment No:" Width="100" VerticalAlignment="Center"/>
+                        <TextBox x:Name="ShipmentTextBox" Width="150"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                        <TextBlock Text="Supplier:" Width="100" VerticalAlignment="Center"/>
+                        <TextBox x:Name="SupplierTextBox" Width="150"/>
+                    </StackPanel>
+
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="Notes:" Margin="0,0,0,5"/>
+                        <TextBox x:Name="NotesTextBox" Height="60" TextWrapping="Wrap" 
+                                VerticalScrollBarVisibility="Auto"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Önizleme -->
+            <GroupBox Header="Preview" Margin="0,0,0,15">
+                <StackPanel Margin="10">
+                    <TextBlock x:Name="PreviewText" FontSize="12" Foreground="#666666" 
+                              TextWrapping="Wrap"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <!-- Butonlar -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="✅ Add" Width="100" Height="35" Margin="0,0,10,0"
+                   Background="#4CAF50" Foreground="White" FontWeight="Bold"
+                   Click="AddButton_Click"/>
+            <Button Content="❌ Cancel" Width="100" Height="35"
+                   Background="#F44336" Foreground="White" FontWeight="Bold"
+                   Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+# Build outputs
+bin/
+obj/
+publish/
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# Log files
+*.log
+detailed_log.txt
+
+# RAR files
+*.rar
+
+# Large ZIP files (will use GitHub Releases instead)
+takip-*-v*.zip
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+
+# Temporary files
+*.tmp
+*.temp

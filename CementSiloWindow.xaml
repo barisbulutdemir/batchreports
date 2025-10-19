@@ -1,0 +1,114 @@
+<Window x:Class="takip.CementSiloWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cement Silo Tracking System" Height="800" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+    
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" Text="🏭 Cement Silo Tracking System" 
+                   FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Side - Silo Visualization -->
+            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <!-- Silo Cards -->
+                    <ItemsControl x:Name="SiloCardsContainer" Margin="0,0,0,20"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Right Side - Warnings and Logs -->
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Warnings -->
+                <GroupBox Grid.Row="0" Header="⚠️ Silo Warnings" Margin="0,0,0,10">
+                    <ScrollViewer Height="150" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl x:Name="WarningsContainer">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Margin="0,2" TextWrapping="Wrap" 
+                                              Foreground="#D32F2F" FontWeight="Bold"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </GroupBox>
+
+                <!-- Recent Activities -->
+                <GroupBox Grid.Row="1" Header="📋 Recent Activities">
+                    <TabControl>
+                        <TabItem Header="Consumptions">
+                            <DataGrid x:Name="ConsumptionGrid" AutoGenerateColumns="False" 
+                                     CanUserAddRows="False" IsReadOnly="True" FontSize="10">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Date" Binding="{Binding ConsumedAt, StringFormat={}{0:dd.MM HH:mm}}" Width="80"/>
+                                    <DataGridTextColumn Header="Silo" Binding="{Binding Silo.CementType}" Width="60"/>
+                                    <DataGridTextColumn Header="Amount" Binding="{Binding ConsumedAmount, StringFormat={}{0:F0} kg}" Width="70"/>
+                                    <DataGridTextColumn Header="Mixer" Binding="{Binding MixerId}" Width="50"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
+                        <TabItem Header="Additions">
+                            <DataGrid x:Name="RefillGrid" AutoGenerateColumns="False" 
+                                     CanUserAddRows="False" IsReadOnly="True" FontSize="10">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Date" Binding="{Binding RefilledAt, StringFormat={}{0:dd.MM HH:mm}}" Width="80"/>
+                                    <DataGridTextColumn Header="Silo" Binding="{Binding Silo.CementType}" Width="60"/>
+                                    <DataGridTextColumn Header="Amount" Binding="{Binding AddedAmount, StringFormat={}{0:F0} kg}" Width="70"/>
+                                    <DataGridTextColumn Header="Operator" Binding="{Binding OperatorName}" Width="80"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
+                    </TabControl>
+                </GroupBox>
+
+                <!-- Bottom Actions -->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                    <Button Content="🧹 Clear History" Height="40" Width="150" Margin="0,0,10,0"
+                            Background="#9E9E9E" Foreground="White" FontWeight="Bold"
+                            Click="ClearHistoryButton_Click"/>
+                    <Button Content="🔄 Refresh" Height="40"
+                            Background="#FF9800" Foreground="White" FontWeight="Bold"
+                            Click="RefreshButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <!-- Bottom Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+            <Button Content="📊 Reports" Width="120" Height="40" Margin="0,0,10,0"
+                   Background="#9C27B0" Foreground="White" FontWeight="Bold"/>
+            <Button Content="⚙️ Settings" Width="120" Height="40" Margin="0,0,10,0"
+                   Background="#607D8B" Foreground="White" FontWeight="Bold"
+                   Click="SettingsButton_Click"/>
+            <Button Content="🧹 Clear History" Width="150" Height="40" Margin="0,0,10,0"
+                    Background="#9E9E9E" Foreground="White" FontWeight="Bold"
+                    Click="ClearHistoryButton_Click"/>
+            <Button Content="❌ Close" Width="100" Height="40"
+                   Background="#F44336" Foreground="White" FontWeight="Bold"
+                   Click="CloseButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
+

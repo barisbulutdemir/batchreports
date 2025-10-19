@@ -1,0 +1,524 @@
+<Window x:Class="takip.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="System Settings" Height="700" Width="900" WindowStartupLocation="CenterOwner"
+        Background="#F5F5F5">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Başlık -->
+        <TextBlock Grid.Row="0" Text="System Settings" FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,20" Foreground="#2196F3"/>
+
+        <!-- Ana İçerik -->
+        <TabControl Grid.Row="1" Background="White" BorderBrush="#CCCCCC" BorderThickness="1">
+            
+            <!-- Mold Management Tab -->
+            <TabItem Header="🔧 Mold Management">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Mold List -->
+                    <GroupBox Grid.Row="1" Header="Existing Molds" Margin="0,10,0,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <DataGrid x:Name="MoldsDataGrid" Grid.Row="0" AutoGenerateColumns="False" 
+                                     CanUserAddRows="False" CanUserDeleteRows="False" 
+                                     CanUserReorderColumns="False" IsReadOnly="True"
+                                     GridLinesVisibility="Horizontal" HeadersVisibility="Column">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
+                                    <DataGridTextColumn Header="Mold Name" Binding="{Binding Name}" Width="*"/>
+                                    <DataGridTextColumn Header="Mold Code" Binding="{Binding Code}" Width="120"/>
+                                    <DataGridTextColumn Header="Status" Binding="{Binding IsActive}" Width="80"/>
+                                    <DataGridTextColumn Header="Created" Binding="{Binding CreatedAt, StringFormat=dd.MM.yyyy HH:mm}" Width="120"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,10,0,0">
+                                <Button x:Name="AddMoldButton" Content="➕ Add Mold" 
+                                       Width="120" Height="35" Margin="0,0,10,0"
+                                       Background="#4CAF50" Foreground="White" FontWeight="Bold"
+                                       Click="AddMoldButton_Click"/>
+                                <Button x:Name="DeleteMoldButton" Content="🗑️ Delete Selected Mold" 
+                                       Width="150" Height="35" Margin="0,0,10,0"
+                                       Background="#F44336" Foreground="White" FontWeight="Bold"
+                                       Click="DeleteMoldButton_Click"/>
+                                <Button x:Name="RefreshMoldsButton" Content="🔄 Refresh" 
+                                       Width="100" Height="35"
+                                       Background="#FF9800" Foreground="White" FontWeight="Bold"
+                                       Click="RefreshMoldsButton_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <!-- Operator Management Tab -->
+            <TabItem Header="👥 Operator Management">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Operator List -->
+                    <GroupBox Grid.Row="1" Header="Existing Operators" Margin="0,10,0,10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <DataGrid x:Name="OperatorsDataGrid" Grid.Row="0" AutoGenerateColumns="False" 
+                                     CanUserAddRows="False" CanUserDeleteRows="False" 
+                                     CanUserReorderColumns="False" IsReadOnly="True"
+                                     GridLinesVisibility="Horizontal" HeadersVisibility="Column">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
+                                    <DataGridTextColumn Header="Operator Name" Binding="{Binding Name}" Width="*"/>
+                                    <DataGridTextColumn Header="Status" Binding="{Binding IsActive}" Width="80"/>
+                                    <DataGridTextColumn Header="Created" Binding="{Binding CreatedAt, StringFormat=dd.MM.yyyy HH:mm}" Width="120"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,10,0,0">
+                                <Button x:Name="AddOperatorButton" Content="➕ Add Operator" 
+                                       Width="150" Height="35" Margin="0,0,10,0"
+                                       Background="#4CAF50" Foreground="White" FontWeight="Bold"
+                                       Click="AddOperatorButton_Click"/>
+                                <Button x:Name="DeleteOperatorButton" Content="🗑️ Delete Selected Operator" 
+                                       Width="180" Height="35" Margin="0,0,10,0"
+                                       Background="#F44336" Foreground="White" FontWeight="Bold"
+                                       Click="DeleteOperatorButton_Click"/>
+                                <Button x:Name="RefreshOperatorsButton" Content="🔄 Refresh" 
+                                       Width="100" Height="35"
+                                       Background="#FF9800" Foreground="White" FontWeight="Bold"
+                                       Click="RefreshOperatorsButton_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <!-- PLC Ayarları Sekmesi -->
+            <TabItem Header="⚙️ PLC Ayarları">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Üretim PLC Ayarları -->
+                        <GroupBox Grid.Row="0" Header="Üretim PLC Ayarları (Taş)" Margin="0,0,0,20">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="IP Adresi:" Margin="0,5,10,5" VerticalAlignment="Center"/>
+                                <TextBox x:Name="ProductionPlcIpTextBox" Grid.Row="0" Grid.Column="1" Margin="0,5,20,5" Padding="5"/>
+
+                                <TextBlock Grid.Row="0" Grid.Column="2" Text="Port:" Margin="0,5,10,5" VerticalAlignment="Center"/>
+                                <TextBox x:Name="ProductionPlcPortTextBox" Grid.Row="0" Grid.Column="3" Margin="0,5,0,5" Padding="5"/>
+
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Makine Sayısı Register:" Margin="0,5,10,5" VerticalAlignment="Center"/>
+                                <TextBox x:Name="MachineCountRegisterTextBox" Grid.Row="1" Grid.Column="1" Margin="0,5,20,5" Padding="5"/>
+
+                                <TextBlock Grid.Row="1" Grid.Column="2" Text="Taş Sayısı Register:" Margin="0,5,10,5" VerticalAlignment="Center"/>
+                                <TextBox x:Name="StoneCountRegisterTextBox" Grid.Row="1" Grid.Column="3" Margin="0,5,0,5" Padding="5"/>
+
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Taş Adı:" Margin="0,5,10,5" VerticalAlignment="Center"/>
+                                <TextBox x:Name="StoneNameTextBox" Grid.Row="2" Grid.Column="1" Margin="0,5,20,5" Padding="5"/>
+                                
+                                <TextBlock Grid.Row="3" Grid.Column="0" Text="Fire Ürün Register:" Margin="0,5,10,5" VerticalAlignment="Center"/>
+                                <TextBox x:Name="FireProductRegisterTextBox" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,5,0,5" Padding="5"/>
+                            </Grid>
+                        </GroupBox>
+
+                        <!-- Beton Santrali PLC Ayarları -->
+                        <GroupBox Grid.Row="1" Header="Beton Santrali PLC Ayarları" Margin="0,0,0,20">
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="IP Adresi:" Margin="0,5,10,5" VerticalAlignment="Center"/>
+                                <TextBox x:Name="ConcretePlcIpTextBox" Grid.Row="0" Grid.Column="1" Margin="0,5,20,5" Padding="5"/>
+
+                                <TextBlock Grid.Row="0" Grid.Column="2" Text="Port:" Margin="0,5,10,5" VerticalAlignment="Center"/>
+                                <TextBox x:Name="ConcretePlcPortTextBox" Grid.Row="0" Grid.Column="3" Margin="0,5,0,5" Padding="5"/>
+
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Güncelleme Süresi (sn):" Margin="0,5,10,5" VerticalAlignment="Center"/>
+                                <TextBox x:Name="PollIntervalTextBox" Grid.Row="1" Grid.Column="1" Margin="0,5,20,5" Padding="5"/>
+
+                                <TextBlock Grid.Row="1" Grid.Column="2" Text="Min Batch Aralığı (sn):" Margin="0,5,10,5" VerticalAlignment="Center"/>
+                                <TextBox x:Name="MinBatchIntervalTextBox" Grid.Row="1" Grid.Column="3" Margin="0,5,0,5" Padding="5"/>
+                            </Grid>
+                        </GroupBox>
+
+                        <!-- Register Adresleri -->
+                        <GroupBox Grid.Row="2" Header="Register Adresleri" Margin="0,0,0,20">
+                            <Grid Margin="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0" Text="M2 Mixer Register Adresleri:" FontWeight="Bold" Margin="0,0,0,10"/>
+                                
+                                <DataGrid x:Name="RegisterDataGrid" Grid.Row="1" AutoGenerateColumns="False" 
+                                         CanUserAddRows="True" CanUserDeleteRows="True" 
+                                         CanUserReorderColumns="False" IsReadOnly="False"
+                                         GridLinesVisibility="All" HeadersVisibility="Column"
+                                         Height="300">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Register Adı" Binding="{Binding Key}" Width="300" MinWidth="250"/>
+                                        <DataGridTextColumn Header="Tip" Binding="{Binding Type}" Width="80" MinWidth="60"/>
+                                        <DataGridTextColumn Header="Adres" Binding="{Binding Value}" Width="200" MinWidth="150"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </GroupBox>
+
+                        <!-- Kaydet Butonu -->
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <Button x:Name="SavePlcSettingsButton" Content="💾 PLC Ayarlarını Kaydet" 
+                                   Background="#4CAF50" Foreground="White" Padding="15,8" 
+                                   FontSize="14" FontWeight="Bold" Click="SavePlcSettingsButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- PLC Test Sekmesi -->
+            <TabItem Header="🔧 PLC Test">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- PLC IP Adresi -->
+                        <StackPanel Grid.Row="0" Margin="0,0,0,15">
+                            <TextBlock Text="PLC IP Adresi:" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
+                            <TextBox x:Name="PlcIpTextBox" Text="192.168.250.1" FontSize="12" Padding="8"
+                                     Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
+                        </StackPanel>
+
+                        <!-- PLC Port -->
+                        <StackPanel Grid.Row="1" Margin="0,0,0,15">
+                            <TextBlock Text="PLC Port:" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
+                            <TextBox x:Name="PlcPortTextBox" Text="9600" FontSize="12" Padding="8"
+                                     Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
+                        </StackPanel>
+
+                        <!-- Register Adresi -->
+                        <StackPanel Grid.Row="2" Margin="0,0,0,15">
+                            <TextBlock Text="Register Adresi:" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
+                            <TextBox x:Name="RegisterAddressTextBox" Text="1000" FontSize="12" Padding="8"
+                                     Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
+                        </StackPanel>
+
+                        <!-- Word Sayısı -->
+                        <StackPanel Grid.Row="3" Margin="0,0,0,15">
+                            <TextBlock Text="Word Sayısı:" FontWeight="Bold" FontSize="14" Margin="0,0,0,5"/>
+                            <TextBox x:Name="WordCountTextBox" Text="1" FontSize="12" Padding="8"
+                                     Background="White" BorderBrush="#CCCCCC" BorderThickness="1"/>
+                        </StackPanel>
+
+                        <!-- Test Sonuçları -->
+                        <GroupBox Grid.Row="4" Header="Test Sonuçları" Margin="0,10,0,10">
+                            <TextBox x:Name="ResultTextBox" FontFamily="Consolas" FontSize="10" 
+                                    TextWrapping="Wrap" Background="#1E1E1E" Foreground="#FFFFFF" 
+                                    Padding="6" IsReadOnly="True" VerticalScrollBarVisibility="Auto"
+                                    AcceptsReturn="True" AcceptsTab="True" BorderThickness="0"
+                                    Height="300"/>
+                        </GroupBox>
+
+                        <!-- Test Butonları -->
+                        <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="0,10,0,0">
+                            <Button x:Name="TestPlcButton" Content="🔧 PLC Test Et" 
+                                   Width="120" Height="35" Margin="0,0,10,0"
+                                   Background="#2196F3" Foreground="White" FontWeight="Bold"
+                                   Click="TestPlcButton_Click"/>
+                            <Button x:Name="ClearResultsButton" Content="🗑️ Temizle" 
+                                   Width="100" Height="35" Margin="0,0,10,0"
+                                   Background="#FF9800" Foreground="White" FontWeight="Bold"
+                                   Click="ClearResultsButton_Click"/>
+                            <TextBlock x:Name="StatusTextBlock" Text="Hazır - Test için bilgileri girin" 
+                                      VerticalAlignment="Center" FontWeight="Bold" Foreground="#666666"/>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Time Zone Settings Tab -->
+            <TabItem Header="🕐 Time Zone">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                    <!-- Current Time Information -->
+                    <GroupBox Grid.Row="0" Header="Current Time Information" Margin="0,0,0,20">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBlock Grid.Row="0" Text="System Time (UTC):" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <TextBlock x:Name="SystemUtcTimeTextBlock" Grid.Row="1" FontSize="14" Margin="0,0,0,10"/>
+                            
+                            <TextBlock Grid.Row="2" Text="Selected Time Zone:" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <TextBlock x:Name="SelectedTimeZoneTextBlock" Grid.Row="3" FontSize="14" Margin="0,0,0,10"/>
+                            
+                            <TextBlock Grid.Row="4" Text="Local Time:" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <TextBlock x:Name="LocalTimeTextBlock" Grid.Row="5" FontSize="14" Foreground="#2196F3"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Time Zone Selection -->
+                    <GroupBox Grid.Row="1" Header="Time Zone Selection" Margin="0,0,0,20">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBlock Grid.Row="0" Text="Time Zone:" FontWeight="Bold" Margin="0,0,0,10"/>
+                            <ComboBox x:Name="TimeZoneComboBox" Grid.Row="1" Height="35" FontSize="12" 
+                                     DisplayMemberPath="DisplayName" SelectedValuePath="Id"
+                                     Margin="0,0,0,10"/>
+                            
+                            <TextBlock Grid.Row="2" Text="Description:" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <TextBlock x:Name="TimeZoneDescriptionTextBlock" Grid.Row="3" 
+                                      TextWrapping="Wrap" Foreground="#666666" Margin="0,0,0,10"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Database Time Settings -->
+                    <GroupBox Grid.Row="2" Header="Database Time Settings" Margin="0,0,0,20">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBlock Grid.Row="0" Text="⚠️ Important Information:" FontWeight="Bold" 
+                                      Foreground="#FF9800" Margin="0,0,0,10"/>
+                            <TextBlock Grid.Row="1" TextWrapping="Wrap" Margin="0,0,0,10">
+                                <Run Text="All date/time data in the database is stored in UTC format. "/>
+                                <Run Text="The selected time zone is used only for display purposes."/>
+                            </TextBlock>
+                            
+                            <CheckBox x:Name="AutoConvertCheckBox" Grid.Row="2" 
+                                     Content="Automatic time zone conversion active" 
+                                     IsChecked="True" Margin="0,0,0,10"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Test Area -->
+                    <GroupBox Grid.Row="3" Header="Time Zone Test" Margin="0,0,0,20">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Button x:Name="TestTimeZoneButton" Grid.Row="0" Content="🕐 Test Time Zone" 
+                                   Width="150" Height="35" Margin="0,0,0,10"
+                                   Background="#2196F3" Foreground="White" FontWeight="Bold"
+                                   Click="TestTimeZoneButton_Click"/>
+                            
+                            <TextBlock Grid.Row="1" Text="Test Result:" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <TextBox x:Name="TimeZoneTestResultTextBox" Grid.Row="2" 
+                                    Height="100" IsReadOnly="True" 
+                                    TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                                    Background="#F5F5F5" BorderBrush="#CCCCCC"/>
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- Save Button -->
+                    <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                        <Button x:Name="SaveTimeZoneButton" Content="💾 Save Time Zone Settings" 
+                               Background="#4CAF50" Foreground="White" Padding="15,8" 
+                               FontSize="14" FontWeight="Bold" Click="SaveTimeZoneButton_Click"/>
+                    </StackPanel>
+                </Grid>
+                </ScrollViewer>
+            </TabItem>
+
+            <!-- Material Names Tab -->
+            <TabItem Header="🏷️ Material Names">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TabControl Grid.Row="0">
+                        <TabItem Header="Mixer 1">
+                            <Grid Margin="8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <GroupBox Header="Aggregate Names" Margin="0,0,8,0">
+                                    <DataGrid x:Name="AggAliasGrid" AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Slot" Binding="{Binding Slot}" IsReadOnly="True" Width="60"/>
+                                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                            <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="80"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
+                                <GroupBox Header="Admixture Names" Grid.Column="1" Margin="8,0,0,0">
+                                    <DataGrid x:Name="AdmAliasGrid" AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Slot" Binding="{Binding Slot}" IsReadOnly="True" Width="60"/>
+                                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                            <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="80"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
+                                <GroupBox Header="Cement Names (1-3)" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,8,0,0">
+                                    <DataGrid x:Name="CementAliasGrid" AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Slot" Binding="{Binding Slot}" IsReadOnly="True" Width="60"/>
+                                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                            <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="80"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Mixer 2">
+                            <Grid Margin="8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <GroupBox Header="Aggregate Names (1-8)" Margin="0,0,8,8">
+                                    <DataGrid x:Name="AggAliasGrid2" AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Slot" Binding="{Binding Slot}" IsReadOnly="True" Width="60"/>
+                                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                            <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="80"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
+                                <GroupBox Header="Admixture Names (1-4)" Grid.Column="1" Margin="8,0,0,8">
+                                    <DataGrid x:Name="AdmAliasGrid2" AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Slot" Binding="{Binding Slot}" IsReadOnly="True" Width="60"/>
+                                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                            <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="80"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
+                                <GroupBox Header="Cement Names (1-3)" Grid.Row="1" Margin="0,8,8,0">
+                                    <DataGrid x:Name="CementAliasGrid2" AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Slot" Binding="{Binding Slot}" IsReadOnly="True" Width="60"/>
+                                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                            <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="80"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
+                                <GroupBox Header="Pigment Names (1-4)" Grid.Row="1" Grid.Column="1" Margin="8,8,0,0">
+                                    <DataGrid x:Name="PigmentAliasGrid2" AutoGenerateColumns="False">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Slot" Binding="{Binding Slot}" IsReadOnly="True" Width="60"/>
+                                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                            <DataGridCheckBoxColumn Header="Active" Binding="{Binding IsActive}" Width="80"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <Button x:Name="InitializeAliasesButton" Content="🚀 Initialize Default Names" 
+                                Width="200" Height="35" Margin="0,0,10,0" 
+                                Background="#FF9800" Foreground="White" FontWeight="Bold"
+                                Click="InitializeAliasesButton_Click"/>
+                        <Button x:Name="SaveAliasesButton" Content="💾 Save Names" 
+                                Width="140" Height="35" 
+                                Background="#4CAF50" Foreground="White" FontWeight="Bold"
+                                Click="SaveAliasesButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+        <!-- Bottom Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button Content="🧹 Clear Silo History" Width="200" Height="40" Margin="0,0,10,0"
+                   Background="#9E9E9E" Foreground="White" FontWeight="Bold"
+                   Click="ClearSiloHistoryFromSettings_Click"/>
+            <Button Content="❌ Close" Width="100" Height="40"
+                   Background="#F44336" Foreground="White" FontWeight="Bold"
+                   Click="CloseButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
